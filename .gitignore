@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+jcapp-gold-finance.github/.deploy*/
+jcapp-gold-finance.github/.DS_Store
+jcapp-gold-finance.github/Thumbs.db
+jcapp-gold-finance.github/db.json
+jcapp-gold-finance.github/*.log
+jcapp-gold-finance.github/node_modules/
+jcapp-gold-finance.github/public/
+jcapp-gold-finance.github/.deploy*/
