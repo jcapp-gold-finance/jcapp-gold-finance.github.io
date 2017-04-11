@@ -87,8 +87,7 @@
 
 
 
-<meta name="description" content="iOS代码规范及技巧（二）
-作者：华文杰
+<meta name="description" content="作者：华文杰
 
 
 在对象内部尽量直接访问实例变量
@@ -101,13 +100,12 @@
 理解“对象等同性”这一概念
 
 NSObject 协议中有两个用于判断等同性的关键方法：
-12-">
+12- (BOOL)isEqua">
 <meta property="og:type" content="article">
-<meta property="og:title" content="金诚App团队blog">
+<meta property="og:title" content="iOS代码规范及技巧（二）">
 <meta property="og:url" content="http://yoursite.com/2017/04/07/iOS代码规范及技巧（二）/index.html">
 <meta property="og:site_name" content="金诚App团队blog">
-<meta property="og:description" content="iOS代码规范及技巧（二）
-作者：华文杰
+<meta property="og:description" content="作者：华文杰
 
 
 在对象内部尽量直接访问实例变量
@@ -120,12 +118,11 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 理解“对象等同性”这一概念
 
 NSObject 协议中有两个用于判断等同性的关键方法：
-12-">
-<meta property="og:updated_time" content="2017-04-11T01:30:31.000Z">
+12- (BOOL)isEqua">
+<meta property="og:updated_time" content="2017-04-11T02:04:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="金诚App团队blog">
-<meta name="twitter:description" content="iOS代码规范及技巧（二）
-作者：华文杰
+<meta name="twitter:title" content="iOS代码规范及技巧（二）">
+<meta name="twitter:description" content="作者：华文杰
 
 
 在对象内部尽量直接访问实例变量
@@ -138,7 +135,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 理解“对象等同性”这一概念
 
 NSObject 协议中有两个用于判断等同性的关键方法：
-12-">
+12- (BOOL)isEqua">
 
 
 
@@ -172,7 +169,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
 
 
-  <title>  | 金诚App团队blog </title>
+  <title> iOS代码规范及技巧（二） | 金诚App团队blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,16 +249,6 @@ NSObject 协议中有两个用于判断等同性的关键方法：
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -290,7 +277,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-iOS代码规范 " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/iOS代码规范及技巧（二）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -315,7 +302,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
             
             
               
-                
+                iOS代码规范及技巧（二）
               
             
           </h1>
@@ -366,7 +353,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
       
 
       
-        <h1 id="iOS代码规范及技巧（二）"><a href="#iOS代码规范及技巧（二）" class="headerlink" title="iOS代码规范及技巧（二）"></a>iOS代码规范及技巧（二）</h1><blockquote>
+        <blockquote>
 <p>作者：华文杰</p>
 </blockquote>
 <ol>
@@ -382,19 +369,19 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 <li><p>NSObject 协议中有两个用于判断等同性的关键方法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (BOOL)isEqual:(id)Object;</div><div class="line">- (NSUInteger)hash;</div></pre></td></tr></table></figure>
 <p>NSObject 类对这两个方法的默认实现时：当且仅当其“指针值”完全相等时，这两个对象才会相等。</p>
-<p>重写的话是hash值相等。 </p>
+<p>重写的话是hash值相等。</p>
 </li>
 <li><p>相同的对象必须具有相同的哈希码，但是两个哈希吗相同的对象未必相同。</p>
 </li>
 <li><p>不要盲目的逐个检测每条属性，而是应该依照具体需求来定制检测方案。</p>
 </li>
-<li><p>编写hash方法时，应该使用计算速度快而且哈希码碰撞几率低的算法。 </p>
+<li><p>编写hash方法时，应该使用计算速度快而且哈希码碰撞几率低的算法。</p>
 </li>
 </ul>
 </li>
 <li><p>以“族类模式”隐藏实现细节。</p>
 <p>“族类”是一种很有用的模式，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">typedef NS_ENUM(NSUInteger, EOCEmployeeType)&#123;</div><div class="line">  EOCEmployeeTypeDeveloper,</div><div class="line">  EOCEmployeeTypeDesigner,</div><div class="line">  EOCEmployeeTypeFinance,</div><div class="line">&#125;</div><div class="line">@interface EOCEmployee: NSObject </div><div class="line">@property (copy) NSString *name;</div><div class="line">@property NSUInteger salary;</div><div class="line"></div><div class="line">//Helper for creating Employee objects</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type;</div><div class="line"></div><div class="line">//Make Employees do their respective day&apos;s work</div><div class="line">- (void)doADaysWork;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation EOCEmployee</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type&#123;</div><div class="line">  	switch(type)&#123;</div><div class="line">      case EOCEmployeeTypeDeveloper:</div><div class="line">      		return [EOCEmployeeDeveloper new];</div><div class="line">      		break;</div><div class="line">      case EOCEmployeeDesigner:</div><div class="line">      		return [EOCEmployeedDesigner new];</div><div class="line">      		break;</div><div class="line">      caes EOCEmployeeFinance:</div><div class="line">      		return [EOCEmployeeFinance new];</div><div class="line">            break;</div><div class="line">  	&#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)doADaysWork&#123;</div><div class="line"> 	//Subclasses implement this.</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">typedef NS_ENUM(NSUInteger, EOCEmployeeType)&#123;</div><div class="line">  EOCEmployeeTypeDeveloper,</div><div class="line">  EOCEmployeeTypeDesigner,</div><div class="line">  EOCEmployeeTypeFinance,</div><div class="line">&#125;</div><div class="line">@interface EOCEmployee: NSObject</div><div class="line">@property (copy) NSString *name;</div><div class="line">@property NSUInteger salary;</div><div class="line"></div><div class="line">//Helper for creating Employee objects</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type;</div><div class="line"></div><div class="line">//Make Employees do their respective day&apos;s work</div><div class="line">- (void)doADaysWork;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation EOCEmployee</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type&#123;</div><div class="line">  	switch(type)&#123;</div><div class="line">      case EOCEmployeeTypeDeveloper:</div><div class="line">      		return [EOCEmployeeDeveloper new];</div><div class="line">      		break;</div><div class="line">      case EOCEmployeeDesigner:</div><div class="line">      		return [EOCEmployeedDesigner new];</div><div class="line">      		break;</div><div class="line">      caes EOCEmployeeFinance:</div><div class="line">      		return [EOCEmployeeFinance new];</div><div class="line">            break;</div><div class="line">  	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)doADaysWork&#123;</div><div class="line"> 	//Subclasses implement this.</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>族类模式可以把实现细节隐藏在一套简单的公共接口后面</li>
 <li>系统框架中经常使用族类</li>
@@ -459,8 +446,8 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/07/iOS 代码规范（一）/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/07/iOS 代码规范（一）/" rel="prev" title="iOS代码规范（一）">
+                iOS代码规范（一） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -508,17 +495,8 @@ NSObject 协议中有两个用于判断等同性的关键方法：
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/jc_logo.png"
@@ -562,22 +540,6 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS代码规范及技巧（二）"><span class="nav-number">1.</span> <span class="nav-text">iOS代码规范及技巧（二）</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
