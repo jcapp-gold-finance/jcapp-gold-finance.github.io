@@ -40,7 +40,7 @@ menu:
   #categories: /categories
   #about: /about
   archives: /archives
-  tags: /tags
+  #tags: /tags
   #sitemap: /sitemap.xml
   #commonweal: /404.html
 
@@ -185,7 +185,7 @@ sidebar:
   #display: always
   #display: hide
   #display: remove
-  
+
   # Sidebar offset from top menubar in pixels.
   offset: 12
   offset_float: 0
@@ -201,7 +201,7 @@ sidebar:
 
   # Back to top in sidebar
   b2t: false
-  
+
   # Scroll percent label in b2t button
   scrollpercent: false
 

@@ -1,8 +1,10 @@
-# 大象iOS组件化调研（二）
-
-## CocoaPods配合git做代码版本管理
+title: 大象iOS组件调研（二）
+type: iOS组件化
+---
 
 > 作者：华文杰
+
+## CocoaPods配合git做代码版本管理
 
 1. 先在公司服务器上创建一个git库
 
@@ -11,7 +13,7 @@
 2. 在本地git库中创建podspec文件
 
    ```objective-c
-   pod spec create JCLogin 
+   pod spec create JCLogin
    ```
 
 3. 打开JCLogin.podspec，然后将git地址改为本地git库的地址
@@ -41,4 +43,3 @@
    ```
 
    ​
-

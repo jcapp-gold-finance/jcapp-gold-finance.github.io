@@ -1,4 +1,6 @@
-# iOS代码规范及技巧（二）
+title: iOS代码规范及技巧（二）
+type: iOS代码规范
+---
 
 > 作者：华文杰
 
@@ -19,13 +21,13 @@
 
      NSObject 类对这两个方法的默认实现时：当且仅当其“指针值”完全相等时，这两个对象才会相等。
 
-     重写的话是hash值相等。 
+     重写的话是hash值相等。
 
    + 相同的对象必须具有相同的哈希码，但是两个哈希吗相同的对象未必相同。
 
    + 不要盲目的逐个检测每条属性，而是应该依照具体需求来定制检测方案。
 
-   + 编写hash方法时，应该使用计算速度快而且哈希码碰撞几率低的算法。 
+   + 编写hash方法时，应该使用计算速度快而且哈希码碰撞几率低的算法。
 
 3. 以“族类模式”隐藏实现细节。
 
@@ -37,7 +39,7 @@
      EOCEmployeeTypeDesigner,
      EOCEmployeeTypeFinance,
    }
-   @interface EOCEmployee: NSObject 
+   @interface EOCEmployee: NSObject
    @property (copy) NSString *name;
    @property NSUInteger salary;
 
@@ -60,7 +62,7 @@
          caes EOCEmployeeFinance:
          		return [EOCEmployeeFinance new];
                break;
-     	} 
+     	}
    }
 
    - (void)doADaysWork{
@@ -83,7 +85,7 @@
      ```
 
    + ```objective-c
-     void objc_removeAssociatedObejcts(id Obejct); 
+     void objc_removeAssociatedObejcts(id Obejct);
      ```
 
      要点
