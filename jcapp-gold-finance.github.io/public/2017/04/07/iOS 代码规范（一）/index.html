@@ -87,58 +87,55 @@
 
 
 
-<meta name="description" content="iOS代码规范及技巧（二）
+<meta name="description" content="iOS 代码规范（一）
 作者：华文杰
 
+1.在类的头文件中尽量少引入其他头文件
 
-在对象内部尽量直接访问实例变量
+要点 
 
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
+除非确有必要，否则不要引入头文件。一般来说，应在某个类的头文件中使用向前声明来提及别的类，并在实现文件中引用那些类的头文件==。（@class）
+协议尽量移动至“class-continuation 分类”（==.m 文件中的intreface==）
 
 
-理解“对象等同性”这一概念
+2.多用字面量语法，少用消息语法
 
-NSObject 协议中有两个用于判断等同性的关键方法：
-12-">
+12&amp;gt; @">
 <meta property="og:type" content="article">
 <meta property="og:title" content="金诚App团队blog">
-<meta property="og:url" content="http://yoursite.com/2017/04/07/iOS代码规范及技巧（二）/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/04/07/iOS 代码规范（一）/index.html">
 <meta property="og:site_name" content="金诚App团队blog">
-<meta property="og:description" content="iOS代码规范及技巧（二）
+<meta property="og:description" content="iOS 代码规范（一）
 作者：华文杰
 
+1.在类的头文件中尽量少引入其他头文件
 
-在对象内部尽量直接访问实例变量
+要点 
 
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
+除非确有必要，否则不要引入头文件。一般来说，应在某个类的头文件中使用向前声明来提及别的类，并在实现文件中引用那些类的头文件==。（@class）
+协议尽量移动至“class-continuation 分类”（==.m 文件中的intreface==）
 
 
-理解“对象等同性”这一概念
+2.多用字面量语法，少用消息语法
 
-NSObject 协议中有两个用于判断等同性的关键方法：
-12-">
-<meta property="og:updated_time" content="2017-04-11T01:30:31.000Z">
+12&amp;gt; @">
+<meta property="og:updated_time" content="2017-04-11T01:30:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="金诚App团队blog">
-<meta name="twitter:description" content="iOS代码规范及技巧（二）
+<meta name="twitter:description" content="iOS 代码规范（一）
 作者：华文杰
 
+1.在类的头文件中尽量少引入其他头文件
 
-在对象内部尽量直接访问实例变量
+要点 
 
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
+除非确有必要，否则不要引入头文件。一般来说，应在某个类的头文件中使用向前声明来提及别的类，并在实现文件中引用那些类的头文件==。（@class）
+协议尽量移动至“class-continuation 分类”（==.m 文件中的intreface==）
 
 
-理解“对象等同性”这一概念
+2.多用字面量语法，少用消息语法
 
-NSObject 协议中有两个用于判断等同性的关键方法：
-12-">
+12&amp;gt; @">
 
 
 
@@ -166,7 +163,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/07/iOS代码规范及技巧（二）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/07/iOS 代码规范（一）/"/>
 
 
 
@@ -291,7 +288,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/iOS代码规范及技巧（二）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/iOS 代码规范（一）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="jcapp">
@@ -366,63 +363,75 @@ NSObject 协议中有两个用于判断等同性的关键方法：
       
 
       
-        <h1 id="iOS代码规范及技巧（二）"><a href="#iOS代码规范及技巧（二）" class="headerlink" title="iOS代码规范及技巧（二）"></a>iOS代码规范及技巧（二）</h1><blockquote>
+        <h1 id="iOS-代码规范（一）"><a href="#iOS-代码规范（一）" class="headerlink" title="iOS 代码规范（一）"></a>iOS 代码规范（一）</h1><blockquote>
 <p>作者：华文杰</p>
 </blockquote>
-<ol>
-<li><p>在对象内部尽量直接访问实例变量</p>
+<p>1.在类的头文件中尽量少引入其他头文件</p>
+<blockquote>
+<p>要点 </p>
 <ul>
-<li>在初始方法及dealloc方法中，应该直接通过实例变量来读写数据</li>
-<li>在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写</li>
-<li>有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据</li>
+<li>除非确有必要，否则不要引入头文件。一般来说，应在某个类的头文件中使用向前声明来提及别的类，并在实现文件中引用那些类的头文件==。（@class）</li>
+<li>协议尽量移动至“class-continuation 分类”（==.m 文件中的intreface==）</li>
 </ul>
-</li>
-<li><p>理解“对象等同性”这一概念</p>
+</blockquote>
+<p>2.多用字面量语法，少用消息语法</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; @1</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p> 代替 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;  [NSNumber numberWithInt:1];</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>等等</p>
 <ul>
-<li><p>NSObject 协议中有两个用于判断等同性的关键方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (BOOL)isEqual:(id)Object;</div><div class="line">- (NSUInteger)hash;</div></pre></td></tr></table></figure>
-<p>NSObject 类对这两个方法的默认实现时：当且仅当其“指针值”完全相等时，这两个对象才会相等。</p>
-<p>重写的话是hash值相等。 </p>
-</li>
-<li><p>相同的对象必须具有相同的哈希码，但是两个哈希吗相同的对象未必相同。</p>
-</li>
-<li><p>不要盲目的逐个检测每条属性，而是应该依照具体需求来定制检测方案。</p>
-</li>
-<li><p>编写hash方法时，应该使用计算速度快而且哈希码碰撞几率低的算法。 </p>
-</li>
+<li>应该使用字面量语法来创建字符串、数值、数组、字典。与创建此类对象的常规方法相比，这么做更加简明扼要。</li>
+<li>应该通过取下标的方式来访问数组，或者Key类访问字典的元素</li>
 </ul>
-</li>
-<li><p>以“族类模式”隐藏实现细节。</p>
-<p>“族类”是一种很有用的模式，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">typedef NS_ENUM(NSUInteger, EOCEmployeeType)&#123;</div><div class="line">  EOCEmployeeTypeDeveloper,</div><div class="line">  EOCEmployeeTypeDesigner,</div><div class="line">  EOCEmployeeTypeFinance,</div><div class="line">&#125;</div><div class="line">@interface EOCEmployee: NSObject </div><div class="line">@property (copy) NSString *name;</div><div class="line">@property NSUInteger salary;</div><div class="line"></div><div class="line">//Helper for creating Employee objects</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type;</div><div class="line"></div><div class="line">//Make Employees do their respective day&apos;s work</div><div class="line">- (void)doADaysWork;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation EOCEmployee</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type&#123;</div><div class="line">  	switch(type)&#123;</div><div class="line">      case EOCEmployeeTypeDeveloper:</div><div class="line">      		return [EOCEmployeeDeveloper new];</div><div class="line">      		break;</div><div class="line">      case EOCEmployeeDesigner:</div><div class="line">      		return [EOCEmployeedDesigner new];</div><div class="line">      		break;</div><div class="line">      caes EOCEmployeeFinance:</div><div class="line">      		return [EOCEmployeeFinance new];</div><div class="line">            break;</div><div class="line">  	&#125; </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)doADaysWork&#123;</div><div class="line"> 	//Subclasses implement this.</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>3.多用类型常量，少用#define预处理指令</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;#define ANIMATION_DURATION 0.3</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;static const NSTimeInterval kAnimationDuration = 0.3</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>如果是全局的话用最新的</p>
+<p>.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;FOUNDATION_EXPORT  NSString* const kMyConstantString;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;NSString*const kMyConstantString = @&quot;Hello,Wenjie!&quot;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+<font color="red">全局符号表 extern</font>
+
 <ul>
-<li>族类模式可以把实现细节隐藏在一套简单的公共接口后面</li>
-<li>系统框架中经常使用族类</li>
-<li>从类族的公共抽象基类中继承子类时要当心，若有开发文档，则应首先阅读</li>
+<li>不要用预处理器定义常量 原则上除非 预定义，不用用定义</li>
+<li>static const  和 extern</li>
 </ul>
-</li>
-<li><p>在既有类中使用关联对象存放自定义数据（runtime知识点）</p>
+</blockquote>
+<p>4.用枚举表示状态、选项、状态码</p>
+<blockquote>
+<p>比较需要关注的是组合枚举</p>
 <ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_setAssociatedObject(id object, void*key, id value, objc_AssociationPolicy)</div></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id objc_getAssoicatedObject(id Object,void *key);</div></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_removeAssociatedObejcts(id Obejct);</div></pre></td></tr></table></figure>
-<p>要点</p>
-<ul>
-<li>可以通过“关联对象”机制来把两个对象连起来</li>
-<li>定义关联对象时可指定内存管理语义，用以模仿定义属性时所采用的“拥有关系”和“非拥有关系”</li>
-<li>只有在其他做法不可行时才应选用关联对象，因为这种做法通常会引入难以查找的bug</li>
-</ul>
+<li><p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;   enum UIViewAutoresizing&#123;</div><div class="line">&gt;     	UIViewAutoresizingNone 					= 0,</div><div class="line">&gt;      	UIViewAutoresizingFlexibleLeftMargin 	= 1 &lt;&lt; 0,</div><div class="line">&gt;     	UIViewAutoresizingFlexibleWidth      	= 1 &lt;&lt; 1,</div><div class="line">&gt;     ....</div><div class="line">&gt;   &#125;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
 </li>
 </ul>
-</li>
-<li><p>理解objc_msgSend的作用</p>
-<ul>
-<li>id returnValue = objc_msgSend(someObject,@selector(messageName:),parameter);</li>
-</ul>
-</li>
-</ol>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+  <font color="red">如果枚举确定 在使用 switch 时最后没有default: 之后枚举添加，会有警告</font>
+
+<p>  NS_ENUM  NS_OPTIONS 用法要注意</p>
+</blockquote>
 
       
     </div>
@@ -453,13 +462,17 @@ NSObject 协议中有两个用于判断等同性的关键方法：
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/04/07/iOS代码规范及技巧（二）/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/07/iOS 代码规范（一）/" rel="prev" title="">
+              <a href="/2017/04/11/大象iOS组件化调研（二）/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -572,7 +585,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS代码规范及技巧（二）"><span class="nav-number">1.</span> <span class="nav-text">iOS代码规范及技巧（二）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#iOS-代码规范（一）"><span class="nav-number">1.</span> <span class="nav-text">iOS 代码规范（一）</span></a></li></ol></div>
             
 
           </div>
