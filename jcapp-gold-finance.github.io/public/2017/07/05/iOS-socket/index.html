@@ -90,9 +90,9 @@
 <meta name="description" content="作者：费宇超
 
 本文不讨论技术选型，不介绍业务逻辑。简单地介绍下开发中会遇到的一些技术点，解决的一些方案。
-###粘包因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。然而这个问题是必须解决的，大致有三种方法。
+粘包因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。然而这个问题是必须解决的，大致有三种方法。
 1：固定包的长度，每次读数据的时候，固定读取字节。这在实际使用中基本不现实。
-2：服务器每次发送消息的时候，给每个包添加上分隔符,如12343">
+2：服务器每次发送消息的时候，给每个包添加上分隔符,如/r,/n。GC">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS 基于GCDAsyncSocket实现的即时聊天">
 <meta property="og:url" content="http://yoursite.com/2017/07/05/iOS-socket/index.html">
@@ -100,18 +100,18 @@
 <meta property="og:description" content="作者：费宇超
 
 本文不讨论技术选型，不介绍业务逻辑。简单地介绍下开发中会遇到的一些技术点，解决的一些方案。
-###粘包因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。然而这个问题是必须解决的，大致有三种方法。
+粘包因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。然而这个问题是必须解决的，大致有三种方法。
 1：固定包的长度，每次读数据的时候，固定读取字节。这在实际使用中基本不现实。
-2：服务器每次发送消息的时候，给每个包添加上分隔符,如12343">
-<meta property="og:updated_time" content="2017-07-05T08:22:15.000Z">
+2：服务器每次发送消息的时候，给每个包添加上分隔符,如/r,/n。GC">
+<meta property="og:updated_time" content="2017-07-05T09:05:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS 基于GCDAsyncSocket实现的即时聊天">
 <meta name="twitter:description" content="作者：费宇超
 
 本文不讨论技术选型，不介绍业务逻辑。简单地介绍下开发中会遇到的一些技术点，解决的一些方案。
-###粘包因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。然而这个问题是必须解决的，大致有三种方法。
+粘包因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。然而这个问题是必须解决的，大致有三种方法。
 1：固定包的长度，每次读数据的时候，固定读取字节。这在实际使用中基本不现实。
-2：服务器每次发送消息的时候，给每个包添加上分隔符,如12343">
+2：服务器每次发送消息的时候，给每个包添加上分隔符,如/r,/n。GC">
 
 
 
@@ -333,83 +333,22 @@
 <p>作者：费宇超</p>
 </blockquote>
 <p>本文不讨论技术选型，不介绍业务逻辑。<br>简单地介绍下开发中会遇到的一些技术点，解决的一些方案。</p>
-<p>###粘包<br>因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。<br>然而这个问题是必须解决的，大致有三种方法。</p>
+<h2 id="粘包"><a href="#粘包" class="headerlink" title="粘包"></a>粘包</h2><p>因为是基于TCP的，而TCP的是流式传输的，不像UDP数据报传输是有边界的，所以会有粘包问题。<br>然而这个问题是必须解决的，大致有三种方法。</p>
 <p>1：固定包的长度，每次读数据的时候，固定读取字节。这在实际使用中基本不现实。</p>
-<p>2：服务器每次发送消息的时候，给每个包添加上分隔符,如<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">3：一般的处理方法是定义一个消息头，消息头中包含了一个包的长度，先拿到包长度再去读取完整的包。</div><div class="line"></div><div class="line">######Socket通信定义</div></pre></td></tr></table></figure></p>
-<p> 头信息：2字节 版本号<br> 功能代码：2字节  功能代码<br> 是否压缩：1个字节 0不压缩， 1压缩<br> 消息长度：2字节<br> 消息实体：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">功能代码是指消息的类型，定义了许多许多， 因为每个项目定义都不一样，就不介绍了。</div><div class="line">按照我们的通信定义，我是这么处理粘包的：</div></pre></td></tr></table></figure></p>
-<pre><code>//解决粘包
-//思路是拆分包头得到长度,判断接得到的长度和包头的长度是否一致，不够就继续拼接，相等就返回，大于的话就自己做下拆分。先
-</code></pre><ul>
-<li>(void)socket:(GCDAsyncSocket <em>)sock didReadData:(NSData </em>)data withTag:(long)tag {<br>  if (tag == 0) {<pre><code>self.readBufferData = [data mutableCopy];
- unsigned short dataLength;
-if(data.length &gt;= 7){
-    dataLength = [self getDataLength:data];
-}else{
-    return;
-}
-[self.socketManager.socket readDataToLength:dataLength withTimeout:-1 tag:1];
-</code></pre>  }else if(tag == 1){<pre><code>NSMutableData * completeData = self.readBufferData;
-self.readBufferData = nil;
-[completeData appendData:data];
-[self handleData:completeData];
-[self.socketManager.socket readDataToLength:7 withTimeout:-1 tag:0];
-</code></pre>  }<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">简单解释下，上面的代理方法是```GCDAsyncSocket```读取数据方法，tag可以区分我的读数据请求，如上```tag==0``` 是我发起的读消息头的返回，再用消息头中的字节长度去读完整的包，即```tag==1```的返回。</div><div class="line"></div><div class="line">乍看一下似乎没有问题了，我也是这么以为的。同事之前写过量级比较大的通信，他遇到过问题，因为网卡缓冲区有个最大值，MTU，如果一下子来N多消息，字节会溢出，有可能会导致字节的少读多读。所以要严格按照代码以上的注释写代码，时间有限，我这边先不上代码。</div><div class="line"></div><div class="line">###生成数据报和解数据报</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>dataLength = [self getDataLength:data];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">上面的代码有这样一个方法。按照字节去拿数据。之前不太清楚苹果有API可以调用。自己写了2个压缩字节的，估计还有些问题。</div></pre></td></tr></table></figure></p>
-<p>/<em>* 将数值转成字节。编码方式：低位在前，高位在后 </em>/</p>
-<ul>
-<li><p>(NSData *)bytesFromValue:(NSInteger)value byteCount:(int)byteCount<br>{<br>  NSAssert(value &lt;= 4294967295, @”bytesFromValue: (max value is 4294967295)”);<br>  NSAssert(byteCount &lt;= 4, @”bytesFromValue: (byte count is too long)”);</p>
-<p>  NSMutableData *valData = [[NSMutableData alloc] init];<br>  NSUInteger tempVal = value;<br>  int offset = 0;</p>
-<p>  while (offset &lt; byteCount) {</p>
-<pre><code>unsigned char valChar = 0xff &amp; tempVal;
-[valData appendBytes:&amp;valChar length:1];
-tempVal = tempVal &gt;&gt; 8;
-offset++;
-</code></pre><p>  }//while</p>
-<p>  return [self dataWithReverse:valData];<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">####正确的做法如下</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>/**</p>
-<ul>
-<li>生成数据报model<br>*/</li>
-</ul>
-<p>-(NSData <em>)socketModelToData{<br>    NSString </em> bodyString = @””;<br>    if([self.body isKindOfClass:[NSDictionary class]]){<br>        bodyString = [self dictionnaryObjectToString:self.body];<br>    }<br>    NSData * dataBody = [bodyString dataUsingEncoding:NSUTF8StringEncoding];</p>
-<pre><code>unsigned short bVersion = htons((short)self.version);
-NSMutableData *version = [[NSMutableData alloc] initWithBytes:&amp;bVersion length:2];
-
-unsigned short vFunctionCode = htons((short)self.functionCode);
-[version appendBytes:&amp;vFunctionCode length:2];
-
-unsigned short typeIsZip = htons((short)0);
-[version appendBytes:&amp;typeIsZip length:1];
-
-unsigned short vDataBodyLength = htons((short)dataBody.length);
-[version appendBytes:&amp;vDataBodyLength length:2];
-[version appendData:dataBody];
-
-return version;
-</code></pre><p>}</p>
-<p>/**</p>
-<ul>
-<li>解析数据报model<br>*/</li>
-</ul>
-<ul>
-<li><p>(DXSocketModel <em>)dataToSocketModel:(NSData </em>)data{</p>
-<p>  DXSocketModel * socketModel = [[DXSocketModel alloc] init];<br>  unsigned short  version;<br>  unsigned short  functionCode;<br>  unsigned short  isGzip;<br>  unsigned short  dataLength;</p>
-<p>  [data getBytes:&amp;version range:NSMakeRange(0,2)];<br>  [data getBytes:&amp;functionCode range:NSMakeRange(2,2)];<br>  [data getBytes:&amp;isGzip range:NSMakeRange(4,1)];<br>  [data getBytes:&amp;dataLength range:NSMakeRange(5,2)];</p>
-</li>
-</ul>
-<pre><code>socketModel.version = ntohs(version);
-socketModel.functionCode = ntohs(functionCode);
-socketModel.isGzip =  ntohs(isGzip);
-socketModel.dataLength = ntohs(dataLength);
-</code></pre><p>//   if(socketModel.dataLength + 7 == data.length){<br>    NSData <em> jsonData =  [data subdataWithRange:NSMakeRange(7,socketModel.dataLength)];<br>    NSString </em> jsonStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];<br>    socketModel.body = [self dictionaryWithJsonString:jsonStr];<br>//    }else{<br>//        NSLog(@”包头提示长度和实际长度不一样”);<br>//    }<br>    ;<br>    return socketModel;<br>}</p>
-<p>```</p>
-<p>###网络字节序和主机字节序<br>如果你认真看了的话，你会发现生成数据和解析数据的时候，我用了这两个<code>ntohs</code>  <code>htons</code>函数，主要是生成的字节高低位和传输中的字节高低位不同。需要转换。</p>
+<p>2：服务器每次发送消息的时候，给每个包添加上分隔符,如/r,/n。GCDAsyncSocket也有方法按照此逻辑直接切割。但这个方案也非常不靠谱。</p>
+<p>3：一般的处理方法是定义一个消息头，消息头中包含了一个包的长度，先拿到包长度再去读取完整的包。</p>
+<h3 id="Socket通信定义"><a href="#Socket通信定义" class="headerlink" title="Socket通信定义"></a>Socket通信定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">头信息：2字节 版本号</div><div class="line">功能代码：2字节  功能代码</div><div class="line">是否压缩：1个字节 0不压缩， 1压缩</div><div class="line">消息长度：2字节</div><div class="line">消息实体：</div></pre></td></tr></table></figure>
+<p>功能代码是指消息的类型，定义了许多许多， 因为每个项目定义都不一样，就不介绍了。<br>按照我们的通信定义，我是这么处理粘包的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">    //解决粘包</div><div class="line">    //思路是拆分包头得到长度,判断接得到的长度和包头的长度是否一致，不够就继续拼接，相等就返回，大于的话就自己做下拆分。先</div><div class="line">- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag &#123;</div><div class="line">    if (tag == 0) &#123;</div><div class="line">        self.readBufferData = [data mutableCopy];</div><div class="line">         unsigned short dataLength;</div><div class="line">        if(data.length &gt;= 7)&#123;</div><div class="line">            dataLength = [self getDataLength:data];</div><div class="line">        &#125;else&#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        [self.socketManager.socket readDataToLength:dataLength withTimeout:-1 tag:1];</div><div class="line">    &#125;else if(tag == 1)&#123;</div><div class="line">        NSMutableData * completeData = self.readBufferData;</div><div class="line">        self.readBufferData = nil;</div><div class="line">        [completeData appendData:data];</div><div class="line">        [self handleData:completeData];</div><div class="line">        [self.socketManager.socket readDataToLength:7 withTimeout:-1 tag:0];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>简单解释下，上面的代理方法是GCDAsyncSocket读取数据方法，tag可以区分我的读数据请求，如上tag==0 是我发起的读消息头的返回，再用消息头中的字节长度去读完整的包，即tag==1的返回。</p>
+<p>乍看一下似乎没有问题了，我也是这么以为的。同事之前写过量级比较大的通信，他遇到过问题，因为网卡缓冲区有个最大值，MTU，如果一下子来N多消息，字节会溢出，有可能会导致字节的少读多读。所以要严格按照代码以上的注释写代码，时间有限，我这边先不上代码。</p>
+<h2 id="生成数据报和解数据报"><a href="#生成数据报和解数据报" class="headerlink" title="生成数据报和解数据报"></a>生成数据报和解数据报</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dataLength = [self getDataLength:data];</div></pre></td></tr></table></figure>
+<p>上面的代码有这样一个方法。按照字节去拿数据。之前不太清楚苹果有API可以调用。自己写了2个压缩字节的，估计还有些问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">/** 将数值转成字节。编码方式：低位在前，高位在后 */</div><div class="line">- (NSData *)bytesFromValue:(NSInteger)value byteCount:(int)byteCount</div><div class="line">&#123;</div><div class="line">    NSAssert(value &lt;= 4294967295, @&quot;bytesFromValue: (max value is 4294967295)&quot;);</div><div class="line">    NSAssert(byteCount &lt;= 4, @&quot;bytesFromValue: (byte count is too long)&quot;);</div><div class="line">    </div><div class="line">    NSMutableData *valData = [[NSMutableData alloc] init];</div><div class="line">    NSUInteger tempVal = value;</div><div class="line">    int offset = 0;</div><div class="line">    </div><div class="line">    while (offset &lt; byteCount) &#123;</div><div class="line">        unsigned char valChar = 0xff &amp; tempVal;</div><div class="line">        [valData appendBytes:&amp;valChar length:1];</div><div class="line">        tempVal = tempVal &gt;&gt; 8;</div><div class="line">        offset++;</div><div class="line">    &#125;//while</div><div class="line">    </div><div class="line">    return [self dataWithReverse:valData];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="正确的做法如下"><a href="#正确的做法如下" class="headerlink" title="正确的做法如下"></a>正确的做法如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">/**</div><div class="line"> *  生成数据报model</div><div class="line"> */</div><div class="line"></div><div class="line">-(NSData *)socketModelToData&#123;</div><div class="line">    NSString * bodyString = @&quot;&quot;;</div><div class="line">    if([self.body isKindOfClass:[NSDictionary class]])&#123;</div><div class="line">        bodyString = [self dictionnaryObjectToString:self.body];</div><div class="line">    &#125;</div><div class="line">    NSData * dataBody = [bodyString dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line">    </div><div class="line">    unsigned short bVersion = htons((short)self.version);</div><div class="line">    NSMutableData *version = [[NSMutableData alloc] initWithBytes:&amp;bVersion length:2];</div><div class="line">    </div><div class="line">    unsigned short vFunctionCode = htons((short)self.functionCode);</div><div class="line">    [version appendBytes:&amp;vFunctionCode length:2];</div><div class="line">    </div><div class="line">    unsigned short typeIsZip = htons((short)0);</div><div class="line">    [version appendBytes:&amp;typeIsZip length:1];</div><div class="line">    </div><div class="line">    unsigned short vDataBodyLength = htons((short)dataBody.length);</div><div class="line">    [version appendBytes:&amp;vDataBodyLength length:2];</div><div class="line">    [version appendData:dataBody];</div><div class="line"></div><div class="line">    return version;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> *  解析数据报model</div><div class="line"> */</div><div class="line"></div><div class="line"></div><div class="line">- (DXSocketModel *)dataToSocketModel:(NSData *)data&#123;</div><div class="line">    </div><div class="line">    DXSocketModel * socketModel = [[DXSocketModel alloc] init];</div><div class="line">    unsigned short  version;</div><div class="line">    unsigned short  functionCode;</div><div class="line">    unsigned short  isGzip;</div><div class="line">    unsigned short  dataLength;</div><div class="line">   </div><div class="line">    [data getBytes:&amp;version range:NSMakeRange(0,2)];</div><div class="line">    [data getBytes:&amp;functionCode range:NSMakeRange(2,2)];</div><div class="line">    [data getBytes:&amp;isGzip range:NSMakeRange(4,1)];</div><div class="line">    [data getBytes:&amp;dataLength range:NSMakeRange(5,2)];</div><div class="line"> </div><div class="line">    </div><div class="line">    socketModel.version = ntohs(version);</div><div class="line">    socketModel.functionCode = ntohs(functionCode);</div><div class="line">    socketModel.isGzip =  ntohs(isGzip);</div><div class="line">    socketModel.dataLength = ntohs(dataLength);</div><div class="line">    </div><div class="line">//   if(socketModel.dataLength + 7 == data.length)&#123;</div><div class="line">    NSData * jsonData =  [data subdataWithRange:NSMakeRange(7,socketModel.dataLength)];</div><div class="line">    NSString * jsonStr = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];</div><div class="line">    socketModel.body = [self dictionaryWithJsonString:jsonStr];</div><div class="line">//    &#125;else&#123;</div><div class="line">//        NSLog(@&quot;包头提示长度和实际长度不一样&quot;);</div><div class="line">//    &#125;</div><div class="line">    ;</div><div class="line">    return socketModel;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="网络字节序和主机字节序"><a href="#网络字节序和主机字节序" class="headerlink" title="网络字节序和主机字节序"></a>网络字节序和主机字节序</h2><p>如果你认真看了的话，你会发现生成数据和解析数据的时候，我用了这两个ntohs，htons函数，主要是生成的字节高低位和传输中的字节高低位不同。需要转换。</p>
 <p>大端和小端（网络字节序和主机字节序）<br>大端（Big Endian）：即网络字节序。<br>小端（Littile Endian）：即主机字节序。<br>这里不得不感叹下API的丰富，方便了我们一批API调用者。<br><a href="http://blog.csdn.net/ce123_zhouwei/article/details/6971544" target="_blank" rel="external">详解大端模式和小端模式</a></p>
-<p>###其他<br>至于一些比较基本的问题：心跳包、断线重连（断线重连要区分是自己主动断开还是网络异常）、GCDAsyncSocket的一些代理方法（GCDAsyncSockets是非阻塞的），百度太多见，就不重复介绍了。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>至于一些比较基本的问题：心跳包、断线重连（断线重连要区分是自己主动断开还是网络异常）、GCDAsyncSocket的一些代理方法（GCDAsyncSockets是非阻塞的），百度太多见，就不重复介绍了。</p>
 
       
     </div>
@@ -495,8 +434,17 @@ socketModel.dataLength = ntohs(dataLength);
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/jc_logo.png"
@@ -540,6 +488,22 @@ socketModel.dataLength = ntohs(dataLength);
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#粘包"><span class="nav-number">1.</span> <span class="nav-text">粘包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Socket通信定义"><span class="nav-number">1.1.</span> <span class="nav-text">Socket通信定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成数据报和解数据报"><span class="nav-number">2.</span> <span class="nav-text">生成数据报和解数据报</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正确的做法如下"><span class="nav-number">2.1.</span> <span class="nav-text">正确的做法如下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络字节序和主机字节序"><span class="nav-number">3.</span> <span class="nav-text">网络字节序和主机字节序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">4.</span> <span class="nav-text">其他</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
