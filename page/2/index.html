@@ -87,55 +87,12 @@
 
 
 
-<meta name="description" content="作者：华文杰
-
-
-在对象内部尽量直接访问实例变量
-
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
-
-
-理解“对象等同性”这一概念
-
-NSObject 协议中有两个用于判断等同性的关键方法：
-12- (BOOL)isEqua">
-<meta property="og:type" content="article">
-<meta property="og:title" content="iOS代码规范及技巧（二）">
-<meta property="og:url" content="http://yoursite.com/2017/04/07/iOS_code_specification2/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="金诚App团队blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="金诚App团队blog">
-<meta property="og:description" content="作者：华文杰
-
-
-在对象内部尽量直接访问实例变量
-
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
-
-
-理解“对象等同性”这一概念
-
-NSObject 协议中有两个用于判断等同性的关键方法：
-12- (BOOL)isEqua">
-<meta property="og:updated_time" content="2017-04-11T02:04:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS代码规范及技巧（二）">
-<meta name="twitter:description" content="作者：华文杰
-
-
-在对象内部尽量直接访问实例变量
-
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
-
-
-理解“对象等同性”这一概念
-
-NSObject 协议中有两个用于判断等同性的关键方法：
-12- (BOOL)isEqua">
+<meta name="twitter:title" content="金诚App团队blog">
 
 
 
@@ -163,13 +120,13 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/07/iOS_code_specification2/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title> iOS代码规范及技巧（二） | 金诚App团队blog </title>
+  <title> 金诚App团队blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -194,7 +151,9 @@ NSObject 协议中有两个用于判断等同性的关键方法：
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -267,9 +226,9 @@ NSObject 协议中有两个用于判断等同性的关键方法：
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -302,7 +261,10 @@ NSObject 协议中有两个用于判断等同性的关键方法：
             
             
               
-                iOS代码规范及技巧（二）
+                
+                <a class="post-title-link" href="/2017/04/07/iOS_code_specification2/" itemprop="url">
+                  iOS代码规范及技巧（二）
+                </a>
               
             
           </h1>
@@ -353,7 +315,9 @@ NSObject 协议中有两个用于判断等同性的关键方法：
       
 
       
-        <blockquote>
+        
+          
+            <blockquote>
 <p>作者：华文杰</p>
 </blockquote>
 <ol>
@@ -411,20 +375,16 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 </li>
 </ol>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
@@ -433,38 +393,25 @@ NSObject 协议中有两个用于判断等同性的关键方法：
       
 
       
-        
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/07/iOS 代码规范（一）/" rel="prev" title="iOS代码规范（一）">
-                iOS代码规范（一） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
           
           </div>
@@ -472,10 +419,6 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -645,10 +588,6 @@ NSObject 协议中有两个用于判断等同性的关键方法：
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 

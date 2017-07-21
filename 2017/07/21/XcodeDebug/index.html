@@ -87,55 +87,35 @@
 
 
 
-<meta name="description" content="作者：华文杰
+<meta name="description" content="作者：王振华
 
-
-在对象内部尽量直接访问实例变量
-
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
-
-
-理解“对象等同性”这一概念
-
-NSObject 协议中有两个用于判断等同性的关键方法：
-12- (BOOL)isEqua">
+#Xcode断点实用调试技巧断点是iOS开发中最常用的调试技巧，Xcode的断点功能是非常强大的，下面介绍一些常用的技巧。
+##编辑断点为了测试，我们先写一个简单的demo。123456789int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        // insert code">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS代码规范及技巧（二）">
-<meta property="og:url" content="http://yoursite.com/2017/04/07/iOS_code_specification2/index.html">
+<meta property="og:title" content="Xcode断点实用调试技巧">
+<meta property="og:url" content="http://yoursite.com/2017/07/21/XcodeDebug/index.html">
 <meta property="og:site_name" content="金诚App团队blog">
-<meta property="og:description" content="作者：华文杰
+<meta property="og:description" content="作者：王振华
 
-
-在对象内部尽量直接访问实例变量
-
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
-
-
-理解“对象等同性”这一概念
-
-NSObject 协议中有两个用于判断等同性的关键方法：
-12- (BOOL)isEqua">
-<meta property="og:updated_time" content="2017-04-11T02:04:09.000Z">
+#Xcode断点实用调试技巧断点是iOS开发中最常用的调试技巧，Xcode的断点功能是非常强大的，下面介绍一些常用的技巧。
+##编辑断点为了测试，我们先写一个简单的demo。123456789int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        // insert code">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug1.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug4.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug3.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug7.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug2.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug5.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug6.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug8.png">
+<meta property="og:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug9.png">
+<meta property="og:updated_time" content="2017-07-21T06:51:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS代码规范及技巧（二）">
-<meta name="twitter:description" content="作者：华文杰
+<meta name="twitter:title" content="Xcode断点实用调试技巧">
+<meta name="twitter:description" content="作者：王振华
 
-
-在对象内部尽量直接访问实例变量
-
-在初始方法及dealloc方法中，应该直接通过实例变量来读写数据
-在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写
-有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据
-
-
-理解“对象等同性”这一概念
-
-NSObject 协议中有两个用于判断等同性的关键方法：
-12- (BOOL)isEqua">
+#Xcode断点实用调试技巧断点是iOS开发中最常用的调试技巧，Xcode的断点功能是非常强大的，下面介绍一些常用的技巧。
+##编辑断点为了测试，我们先写一个简单的demo。123456789int main(int argc, const char * argv[]) &amp;#123;    @autoreleasepool &amp;#123;        // insert code">
+<meta name="twitter:image" content="http://yoursite.com/img/XcodeDebug/XcodeDebug1.png">
 
 
 
@@ -163,13 +143,13 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/07/iOS_code_specification2/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/21/XcodeDebug/"/>
 
 
 
 
 
-  <title> iOS代码规范及技巧（二） | 金诚App团队blog </title>
+  <title> Xcode断点实用调试技巧 | 金诚App团队blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -277,8 +257,8 @@ NSObject 协议中有两个用于判断等同性的关键方法：
   
   
 
-  <article class="post post-type-iOS代码规范 " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/07/iOS_code_specification2/">
+  <article class="post post-type-iOS " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/XcodeDebug/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="jcapp">
@@ -302,7 +282,7 @@ NSObject 协议中有两个用于判断等同性的关键方法：
             
             
               
-                iOS代码规范及技巧（二）
+                Xcode断点实用调试技巧
               
             
           </h1>
@@ -317,8 +297,8 @@ NSObject 协议中有两个用于判断等同性的关键方法：
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-07T22:40:23+08:00">
-                2017-04-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T14:45:12+08:00">
+                2017-07-21
               </time>
             
 
@@ -354,62 +334,19 @@ NSObject 协议中有两个用于判断等同性的关键方法：
 
       
         <blockquote>
-<p>作者：华文杰</p>
+<p>作者：王振华</p>
 </blockquote>
-<ol>
-<li><p>在对象内部尽量直接访问实例变量</p>
-<ul>
-<li>在初始方法及dealloc方法中，应该直接通过实例变量来读写数据</li>
-<li>在对象内部读书数据时，应该直接通过实例变量来读取，而写入数据时，则应该通过属性来写</li>
-<li>有时使用惰性初始化技术配置某份数据，这种情况下，需要通过属性来读取数据</li>
-</ul>
-</li>
-<li><p>理解“对象等同性”这一概念</p>
-<ul>
-<li><p>NSObject 协议中有两个用于判断等同性的关键方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (BOOL)isEqual:(id)Object;</div><div class="line">- (NSUInteger)hash;</div></pre></td></tr></table></figure>
-<p>NSObject 类对这两个方法的默认实现时：当且仅当其“指针值”完全相等时，这两个对象才会相等。</p>
-<p>重写的话是hash值相等。</p>
-</li>
-<li><p>相同的对象必须具有相同的哈希码，但是两个哈希吗相同的对象未必相同。</p>
-</li>
-<li><p>不要盲目的逐个检测每条属性，而是应该依照具体需求来定制检测方案。</p>
-</li>
-<li><p>编写hash方法时，应该使用计算速度快而且哈希码碰撞几率低的算法。</p>
-</li>
-</ul>
-</li>
-<li><p>以“族类模式”隐藏实现细节。</p>
-<p>“族类”是一种很有用的模式，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">typedef NS_ENUM(NSUInteger, EOCEmployeeType)&#123;</div><div class="line">  EOCEmployeeTypeDeveloper,</div><div class="line">  EOCEmployeeTypeDesigner,</div><div class="line">  EOCEmployeeTypeFinance,</div><div class="line">&#125;</div><div class="line">@interface EOCEmployee: NSObject</div><div class="line">@property (copy) NSString *name;</div><div class="line">@property NSUInteger salary;</div><div class="line"></div><div class="line">//Helper for creating Employee objects</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type;</div><div class="line"></div><div class="line">//Make Employees do their respective day&apos;s work</div><div class="line">- (void)doADaysWork;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation EOCEmployee</div><div class="line">+ (EOCEmployee *)employeeWithType:(EOCEmployeeType)type&#123;</div><div class="line">  	switch(type)&#123;</div><div class="line">      case EOCEmployeeTypeDeveloper:</div><div class="line">      		return [EOCEmployeeDeveloper new];</div><div class="line">      		break;</div><div class="line">      case EOCEmployeeDesigner:</div><div class="line">      		return [EOCEmployeedDesigner new];</div><div class="line">      		break;</div><div class="line">      caes EOCEmployeeFinance:</div><div class="line">      		return [EOCEmployeeFinance new];</div><div class="line">            break;</div><div class="line">  	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)doADaysWork&#123;</div><div class="line"> 	//Subclasses implement this.</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>族类模式可以把实现细节隐藏在一套简单的公共接口后面</li>
-<li>系统框架中经常使用族类</li>
-<li>从类族的公共抽象基类中继承子类时要当心，若有开发文档，则应首先阅读</li>
-</ul>
-</li>
-<li><p>在既有类中使用关联对象存放自定义数据（runtime知识点）</p>
-<ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_setAssociatedObject(id object, void*key, id value, objc_AssociationPolicy)</div></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id objc_getAssoicatedObject(id Object,void *key);</div></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">void objc_removeAssociatedObejcts(id Obejct);</div></pre></td></tr></table></figure>
-<p>要点</p>
-<ul>
-<li>可以通过“关联对象”机制来把两个对象连起来</li>
-<li>定义关联对象时可指定内存管理语义，用以模仿定义属性时所采用的“拥有关系”和“非拥有关系”</li>
-<li>只有在其他做法不可行时才应选用关联对象，因为这种做法通常会引入难以查找的bug</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>理解objc_msgSend的作用</p>
-<ul>
-<li>id returnValue = objc_msgSend(someObject,@selector(messageName:),parameter);</li>
-</ul>
-</li>
-</ol>
+<p>#Xcode断点实用调试技巧<br>断点是iOS开发中最常用的调试技巧，Xcode的断点功能是非常强大的，下面介绍一些常用的技巧。</p>
+<p>##编辑断点<br>为了测试，我们先写一个简单的demo。<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> main(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[]) &#123;</div><div class="line">    <span class="keyword">@autoreleasepool</span> &#123;</div><div class="line">        <span class="comment">// insert code here...</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"%i"</span>,i);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后可以在for循环内加一个断点，并选择Edit Breakpoint。<br><img src="/img/XcodeDebug/XcodeDebug1.png" alt="1"></p>
+<p>我们可以设置断点执行的condition，这里设置i==5。<br><img src="/img/XcodeDebug/XcodeDebug4.png" alt="4"><br><img src="/img/XcodeDebug/XcodeDebug3.png" alt="3"><br>可以看到，当运行到i==5时，断点被触发。<br>另外，也可以在ignore中选择忽略若干次循环。</p>
+<p>action表示触发断点时执行的操作，这里的功能非常强大，除了常见的输出log信息，还可以播放声音，甚至运行脚本。<br><img src="/img/XcodeDebug/XcodeDebug7.png" alt="7"></p>
+<p>在这里，我们选择忽略前两次循环，并打印i的值。<br><img src="/img/XcodeDebug/XcodeDebug2.png" alt="2"></p>
+<p>可以看到输出结果。<br><img src="/img/XcodeDebug/XcodeDebug5.png" alt="5"></p>
+<p>勾选option，可以在断点触发之后继续运行程序。</p>
+<p>##异常捕获断点<br>当程序crash时，我们希望能准确定位到错误位置。但是Xcode有时并不能准确捕获，而是断在main函数里。这时可以增加一个全局的Exception Breakpoint。大多数异常都可以用这种方法捕获。<br><img src="/img/XcodeDebug/XcodeDebug6.png" alt="6"></p>
+<p>##符号断点<br>Symbolic Breakpoint也是一个全局断点，在断点的描述里可以设置Symbol（方法名）、Module（模块名）、Condition、Action等。例如，想在代码中查找是否有图片为nil，可以这样设置。arg3表示第一个参数，arg4表示第二个参数。<br><img src="/img/XcodeDebug/XcodeDebug8.png" alt="8"></p>
+<p>当程序运行到有图片被设为nil时，就会触发断点。<br><img src="/img/XcodeDebug/XcodeDebug9.png" alt="9"></p>
 
       
     </div>
@@ -440,15 +377,15 @@ NSObject 协议中有两个用于判断等同性的关键方法：
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/07/05/iOS-socket/" rel="next" title="iOS 基于GCDAsyncSocket实现的即时聊天">
+                <i class="fa fa-chevron-left"></i> iOS 基于GCDAsyncSocket实现的即时聊天
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/07/iOS 代码规范（一）/" rel="prev" title="iOS代码规范（一）">
-                iOS代码规范（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
