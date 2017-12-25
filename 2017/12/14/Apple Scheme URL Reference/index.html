@@ -1,0 +1,1025 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Interpreter：戴奕
+Apple 官方文档：《Apple Scheme URL Reference》翻译一篇。文虽短但里面还是有些有意思的东西。
+
+This document describes several URL schemes that are supported by system apps on iOS, macOS, and watchOS 2 and later. Nat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About Apple URL Schemes 翻译一篇">
+<meta property="og:url" content="http://yoursite.com/2017/12/14/Apple Scheme URL Reference/index.html">
+<meta property="og:site_name" content="金诚App团队blog">
+<meta property="og:description" content="Interpreter：戴奕
+Apple 官方文档：《Apple Scheme URL Reference》翻译一篇。文虽短但里面还是有些有意思的东西。
+
+This document describes several URL schemes that are supported by system apps on iOS, macOS, and watchOS 2 and later. Nat">
+<meta property="og:updated_time" content="2017-12-25T02:54:16.902Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="About Apple URL Schemes 翻译一篇">
+<meta name="twitter:description" content="Interpreter：戴奕
+Apple 官方文档：《Apple Scheme URL Reference》翻译一篇。文虽短但里面还是有些有意思的东西。
+
+This document describes several URL schemes that are supported by system apps on iOS, macOS, and watchOS 2 and later. Nat">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/14/Apple Scheme URL Reference/"/>
+
+
+
+
+
+  <title> About Apple URL Schemes 翻译一篇 | 金诚App团队blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">金诚App团队blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-iOS " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/14/Apple Scheme URL Reference/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="jcapp">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/jc_logo.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="金诚App团队blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="金诚App团队blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                About Apple URL Schemes 翻译一篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:20:25+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>Interpreter：戴奕</p>
+<p>Apple 官方文档：《Apple Scheme URL Reference》翻译一篇。文虽短但里面还是有些有意思的东西。</p>
+</blockquote>
+<p>This document describes several URL schemes that are supported by system apps on iOS, macOS, and watchOS 2 and later. Native iOS apps and web apps running in Safari on any platform can use these schemes to integrate with system apps and provide a more seamless experience for the user. For example, if your iOS app displays telephone numbers, you could use an appropriate URL to launch the Phone app whenever someone taps one of those numbers. Similarly, clicking an iTunes link launches the iTunes app and plays the song specified in the link. When a user clicks a link, what happens depends on the platform and the installed system apps.</p>
+<hr>
+<p>本文档介绍了在 iOS、macOS 和 watchOS2 及以上版本的 watchOS 中所支持的几种系统 URL scheme。在任何平台上运行的 iOS 原生 app 或者 Safari 中的 web app 都可以使用这些 scheme 来提供一种无缝连接的用户体验。打个比方，如果你的 iOS app 显示了一串电话号码，你可以在用户点击电话号码的时候调用适当的URL来启动“电话”这个系统 app 来打电话。同样的，在点击一个 iTunes 链接的时候启动 iTunes app 并播放链接中指定的歌曲。当一个用户点击链接时，具体发生什么事情取决于当前操作系统和系统app。</p>
+<p>This document describes those schemes that require special attributes or special formatting in order to be understood by the associated system app. As a result, this document does not describe all URL schemes supported on different Apple platforms.</p>
+<hr>
+<p>这个文档的目的是帮助读者理解那些必须使用特殊格式才能和系统 app 关联的 scheme。所以，这个文档并没有把所有 Apple 平台上支持的 URL scheme 都列举出来。</p>
+<h2 id="At-a-Glance"><a href="#At-a-Glance" class="headerlink" title="At a Glance"></a>At a Glance</h2><p>You should read this document if you want to launch a system app from your iOS or macOS app, or from your web app running in Safari. This document contains both Cocoa Touch sample code—using the <code>openURL:options:completionHandler:</code> method of the shared <code>UIApplication</code> object to open URLs—and HTML samples.</p>
+<hr>
+<p>如果你想在 iOS app、macOS app 以及 Safari 的 web app 中启动系统 app，那么应该先读该文档。这个文档包含了 Cocoa Touch 中的例子——使用 <code>UIApplication</code> 单例中的 <code>openURL:options:completionHandler:</code> 方法，以及HTML中的例子。</p>
+<h3 id="Composing-Items-Using-Mail"><a href="#Composing-Items-Using-Mail" class="headerlink" title="Composing Items Using Mail"></a>Composing Items Using Mail</h3><p>Use the <code>mailto</code> scheme to open the Mail app and populate a new email with information.</p>
+<hr>
+<p>使用 <code>mailto</code> scheme 打开邮件 app 并使用附带的信息生成新的邮件。</p>
+<h4 id="Mail-Links"><a href="#Mail-Links" class="headerlink" title="Mail Links"></a>Mail Links</h4><p>The <code>mailto</code> scheme is used to launch the Mail app and open the email compose sheet. When specifying a <code>mailto</code> URL, you must provide the target email address. The following examples show strings formatted for Safari and for native apps.</p>
+<hr>
+<p><code>mailto</code> scheme 用来启动 邮件 app 并打开邮件编写页面。当指定一个 <code>mailto</code> URL的时候，你必须提供目标邮件的地址。以下的例子里列举了 Safari 和 原生 app 中的 scheme 格式：</p>
+<ul>
+<li>HTML link:</li>
+</ul>
+<p><code>&lt;a href=&quot;mailto:frank@wwdcdemo.example.com&quot;&gt;John Frank&lt;/a&gt;</code></p>
+<ul>
+<li>Native app URL string:</li>
+</ul>
+<p><code>mailto:frank@wwdcdemo.example.com</code></p>
+<p>You can also include a subject field, a message, and multiple recipients in the To, Cc, and Bcc fields. (In iOS, the <code>from</code> attribute is ignored.) The following example shows a <code>mailto</code>URL that includes several different attributes:</p>
+<hr>
+<p>你还可以在scheme中包含主题、邮件内容、多个收件人、多个抄送以及密送人。以下例子中展示了一个包含多种不同属性的 <code>mailto</code> scheme：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mailto:foo@example.com?cc=bar@example.com&amp;subject=Greetings%20from%20Cupertino!&amp;body=Wish%20you%20were%20here!</div></pre></td></tr></table></figure>
+<p>For detailed information on the format of the <code>mailto</code> scheme, see <a href="http://www.ietf.org/rfc/rfc2368.txt" target="_blank" rel="external">RFC 2368</a>.</p>
+<hr>
+<p>有关 <code>mailto</code> scheme 的详细格式方案信息，请参阅 <a href="http://www.ietf.org/rfc/rfc2368.txt" target="_blank" rel="external">RFC 2368</a>。</p>
+<blockquote>
+<p><strong>iOS Note:</strong> If the Mail app is not installed, clicking a <code>mailto</code> URL displays an appropriate warning message to the user.</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>iOS 提醒：如果 邮件 app 没有安装，那么在点击 <code>mailto</code> URL 的时候会显示一个合适的警告给用户。</p>
+</blockquote>
+<h3 id="Starting-a-Phone-or-FaceTime-Conversation"><a href="#Starting-a-Phone-or-FaceTime-Conversation" class="headerlink" title="Starting a Phone or FaceTime Conversation"></a>Starting a Phone or FaceTime Conversation</h3><p>Use the <code>tel</code> and <code>facetime</code> schemes to initiate telephone or video conversations.</p>
+<hr>
+<p>使用 <code>tel</code> 和 <code>facetime</code> scheme 开始通话或发起一个视频会话。</p>
+<h4 id="Phone-Links"><a href="#Phone-Links" class="headerlink" title="Phone Links"></a>Phone Links</h4><p>The <code>tel</code> URL scheme is used to launch the Phone app on iOS devices and initiate dialing of the specified phone number. When a user taps a telephone link in a webpage, iOS displays an alert asking if the user really wants to dial the phone number and initiates dialing if the user accepts. When a user opens a URL with the <code>tel</code> scheme in a native app, iOS 10.3 and later displays an alert and requires user confirmation before dialing. (When this scenario occurs in versions of iOS prior to 10.3, iOS initiates dialing without further prompting the user and does not display an alert, although a native app can be configured to display its own alert.)</p>
+<hr>
+<p><code>tel</code> URL scheme 用来启动 iOS 上的 电话 app 并向指定的手机号码拨号。当用户点击一个网页上的手机号链接时，iOS系统会弹出一个对话框询问用户是否要拨打当前这个号码，如果用户接受的话，就会向这个手机号拨号。当一个用户在 原生 app 上打开一个 <code>tel</code> scheme 时，如果是 iOS10.3 以及更高的系统版本的话，在拨打之前也会弹出一个确认框。（当这种情况发生在10.3以下的系统中时，iOS 不会提示用户也不会显示一个对话框，而会直接启动 电话 app 并拨打，除非 app 中自行弹出一个对话框。）</p>
+<p>FaceTime in macOS 10.10 and later can also use the <code>tel</code> URL scheme to launch the Phone app on an iOS device by using Handoff. This scenario works when FaceTime is configured to dial phone numbers (the default configuration) and the iOS device is connected to the same iCloud account as the Mac.</p>
+<hr>
+<p>FaceTime 在 macOS 10.10 以及之后的系统中也可以使用 <code>tel</code> URL scheme 然后通过 Handoff 启动 iOS 设备上的 电话 app。这种情况只有在 FaceTime 配置为拨打电话号码（默认配置）并且 iOS 设备和 Mac 的 iCloud 账号为同一个账号时才会发生。（否则在 macOS 上使用 <code>tel</code> scheme 会直接打开 FaceTime app）。</p>
+<p>You can specify phone links explicitly in both web and native iOS apps using the <code>tel</code> URL scheme. The following examples show the strings formatted for Safari and for a native app:</p>
+<hr>
+<p>在 web 和 原生 iOS app 上你都可以使用 <code>tel</code> URL scheme。以下的例子展示了该 scheme 的规则：</p>
+<ul>
+<li>HTML link:</li>
+</ul>
+<p><code>&lt;a href=&quot;tel:1-408-555-5555&quot;&gt;1-408-555-5555&lt;/a&gt;</code></p>
+<ul>
+<li>Native app URL string:</li>
+</ul>
+<p><code>tel:1-408-555-5555</code></p>
+<p>To prevent users from maliciously redirecting phone calls or changing the behavior of a phone or account, the Phone app supports most, but not all, of the special characters in the <code>tel</code> scheme. Specifically, if a URL contains the <code>*</code> or <code>#</code> characters, the Phone app does not attempt to dial the corresponding phone number. If your app receives URL strings from the user or an unknown source, you should also make sure that any special characters that might not be appropriate in a URL are escaped properly. For native apps, use the <code>stringByAddingPercentEscapesUsingEncoding:</code> method of <code>NSString</code> to escape characters, which returns a properly escaped version of your original string.</p>
+<hr>
+<p>为了避免用户拨打恶意重定向电话或者更改电话、账号的行为，电话 app 支持 <code>tel</code> scheme 中大部分但并非全部的特殊字符。具体来说，如果 URL 中包含 <code>*</code> 或者 <code>#</code> 字符，电话 app 不会尝试拨打相应的手机号码。如果你的 app 收到用户或者未知来源的 URL 字符串，你应该确保 URL 中的特殊字符能够被正确转义。在原生 app 中，使用<code>NSString</code>类中的 <code>stringByAddingPercentEscapesUsingEncoding:</code> 方法来转义，该方法会返回转义后的字符串。</p>
+<p>In Safari on iOS, telephone number detection is on by default. However, if your webpage contains numbers that can be interpreted as phone numbers, but are not phone numbers, you can turn off telephone number detection. You might also turn off telephone number detection to prevent the DOM document from being modified when parsed by the browser. To turn off telephone number detection in Safari on iOS, use the <code>format-detection</code> meta tag as follows:</p>
+<hr>
+<p>在 iOS 的 Safari 浏览器上，电话号码检测是默认开启的。但是如果你的网页上包含一些被误认为电话号码的数字，你可以关闭电话号码检测。为了防止浏览器解析DOM时篡改电话号码，你也可以关闭电话号码检测功能。使用 <code>format-detection</code> 标签来关闭 iOS 中的 Safari 电话检测功能，如下所示：</p>
+<p><code>&lt;meta name = &quot;format-detection&quot; content = &quot;telephone=no&quot;&gt;</code></p>
+<p>Listing 2-1 shows a simple webpage in which automatic telephone number detection is off. When displayed in Safari on iOS, the <code>408-555-5555</code> telephone number does not appear as a link. However, the <code>1-408-555-5555</code> number does appear as a link because it is in a phone link.</p>
+<hr>
+<p>2-1 清单展示了一个关闭电话检测的简单网页。当网页展示在 iOS 的 Safari 中时， <code>408-555-5555</code> 并不会展示成链接的样子。然而，<code>1-408-555-5555</code> 会被显示成一个链接因为它确实是一个超链接（标签）。</p>
+<p><strong>Listing 2-1</strong>  Turning telephone number detection off</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"</span></div><div class="line">        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/1999/xhtml"</span> <span class="attr">xml:lang</span>=<span class="string">"en"</span> <span class="attr">lang</span>=<span class="string">"en"</span> &gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Telephone Number Detection<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span> = <span class="string">"viewport"</span> <span class="attr">content</span> = <span class="string">"width=device-width"</span>&gt;</span></div><div class="line">     <span class="comment">&lt;!-- Turn off telephone number detection. --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span> = <span class="string">"format-detection"</span> <span class="attr">content</span> = <span class="string">"telephone=no"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">     <span class="comment">&lt;!-- Then use phone links to explicitly create a link. --&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span>A phone number: <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"tel:1-408-555-5555"</span>&gt;</span>1-408-555-5555<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">     <span class="comment">&lt;!-- Otherwise, numbers that look like phone numbers are not links. --&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">p</span>&gt;</span>Not a phone number: 408-555-5555<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>iOS Note:</strong> If the Phone app is not installed on the iOS device, opening a <code>tel</code> URL displays an appropriate warning message to the user.</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>iOS 提醒：如果 电话 app 没有安装，那么在打开 <code>tel</code> URL 的时候会显示一个合适的警告给用户。</p>
+</blockquote>
+<p>For more information about the <code>tel</code> URL scheme, see <a href="http://www.ietf.org/rfc/rfc2806.txt" target="_blank" rel="external">RFC 2806</a> and <a href="http://www.ietf.org/rfc/rfc2396.txt" target="_blank" rel="external">RFC 2396</a>.</p>
+<hr>
+<p>有关 <code>tel</code> URL scheme 的详细信息，请参阅 <a href="http://www.ietf.org/rfc/rfc2806.txt" target="_blank" rel="external">RFC 2806</a> 和 <a href="http://www.ietf.org/rfc/rfc2396.txt" target="_blank" rel="external">RFC 2396</a>。</p>
+<h4 id="FaceTime-Links"><a href="#FaceTime-Links" class="headerlink" title="FaceTime Links"></a>FaceTime Links</h4><p>The <code>facetime</code> URL scheme is used to initiate a FaceTime call to a specified user. You can use the phone number or email address of a user to initiate the call. When a user taps a FaceTime link in a webpage, iOS confirms that the user really wants to initiate a FaceTime call before proceeding. When an app opens a URL with the <code>facetime</code> scheme, iOS opens the FaceTime app and initiates the call without prompting the user. When opening FaceTime URLs on macOS, the system always prompts the user before initiating a call.</p>
+<hr>
+<p><code>faceTime</code> URL scheme 用来给指定用户发起 FaceTime 通话。你可以用户的使用电话号码或者邮件地址来发起。当用户点击一个网页上的 FaceTime 链接时， iOS 系统会在继续之前让用户进行确认。当一个 app 打开 <code>facetime</code> URL时， iOS 不会提示用户而是直接打开 FaceTime app。（实测iOS10以下不会提醒，iOS10及以上会弹出确认框）在 macOS 上打开 FaceTime URL 的时候，系统总是会在打开之前提醒用户。）</p>
+<p>You can specify FaceTime links explicitly in both web and native iOS apps using the <code>facetime</code> URL scheme. The following examples show the strings formatted for Safari and for a native app:</p>
+<hr>
+<p>在 web 和 原生 iOS app 上你都可以使用 <code>facetime</code> URL scheme 来制定一个 FaceTime 链接。以下的例子展示了该格式的字符串：</p>
+<ul>
+<li>HTML links for FaceTime video calls:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"facetime:14085551234"</span>&gt;</span>Connect using FaceTime<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"facetime:user@example.com"</span>&gt;</span>Connect using FaceTime<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>HTML links for FaceTime audio calls (iOS only):</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"facetime-audio:14085551234"</span>&gt;</span>Connect using FaceTime<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"facetime-audio:user@example.com"</span>&gt;</span>Connect using FaceTime<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Native app URL strings for FaceTime video calls:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">facetime://14085551234</div><div class="line">facetime://user@example.com</div></pre></td></tr></table></figure>
+<ul>
+<li>Native app URL strings for FaceTime audio calls (iOS only):</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">facetime-audio://14085551234</div><div class="line">facetime-audio://user@example.com</div></pre></td></tr></table></figure>
+<p>To prevent users from maliciously redirecting calls or changing the behavior of a phone or account, the FaceTime app supports most, but not all, of the special characters in the <code>facetime</code> schemes. Specifically, if a URL contains the <code>*</code> or <code>#</code> characters, the app ignores those characters when they are included after the phone number. If your app receives URL strings from the user or from an unknown source, use the <code>stringByAddingPercentEscapesUsingEncoding:</code> method of <code>NSString</code> to generate a properly escaped version of the original string before opening the URL.</p>
+<hr>
+<p>为了避免用户拨打恶意重定向电话或者更改电话、账号的行为，FaceTime app 支持 <code>facetime</code> scheme 中大部分但并非全部的特殊字符。具体来说，如果 URL 中包含 <code>*</code> 或者 <code>#</code> 字符，并且当这些字符都在电话号码后面时，FaceTime app会忽略他们 。如果你的 app 收到用户或者未知来源的 URL 字符串，你可以使用<code>NSString</code>类中的 <code>stringByAddingPercentEscapesUsingEncoding:</code> 方法来转义后在进行打开。</p>
+<blockquote>
+<p><strong>iOS Note:</strong> If the FaceTime app is not installed on the iOS device or Mac, opening a <code>facetime</code> URL displays an appropriate warning message to the user. Prior to iOS 7, the Phone app handled FaceTime calls.</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>iOS 提醒：如果在 iOS 或者 Mac 设备上 FaceTime app 没有安装，那么在打开 <code>facetime</code> URL 的时候会显示一个合适的警告给用户。在 iOS7 之前则会由 电话 app 来处理这个 scheme。</p>
+</blockquote>
+<h3 id="Specifying-Text-Messages"><a href="#Specifying-Text-Messages" class="headerlink" title="Specifying Text Messages"></a>Specifying Text Messages</h3><p>Use the <code>sms</code> scheme to compose a text message and specify a recipient.</p>
+<hr>
+<p>使用 <code>sms</code> scheme 来编写短信并指定接收人。</p>
+<h4 id="SMS-Links"><a href="#SMS-Links" class="headerlink" title="SMS Links"></a>SMS Links</h4><blockquote>
+<p><strong>iOS Note:</strong> SMS text links are supported on iOS only.</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>iOS 提醒：短信链接只支持 iOS 设备。</p>
+</blockquote>
+<p>The <code>sms</code> scheme is used to launch the Messages app. The format for URLs of this type is “<code>sms:</code><em><phone></phone></em>”, where <em><phone></phone></em> is an optional parameter that specifies the target phone number of the SMS message. This parameter can contain the digits 0 through 9 and the plus (<code>+</code>), hyphen (<code>-</code>), and period (<code>.</code>) characters. The URL string must not include any message text or other information.</p>
+<hr>
+<p><code>sms</code> scheme 用来启动 短信 app。这个 URL 的格式是  “<code>sms:</code><em>&lt;手机号&gt;</em>”，<em>&lt;手机号&gt;</em>是一个可选参数，这是用来指定短信发送到谁的手机号上。这个参数里可以包含数字0~9，<code>+</code>，<code>-</code>，<code>.</code>。这个 URL 字符串中不能包含包括短信文本在内的其他信息。</p>
+<p>The following examples show strings formatted for Safari and for native apps.</p>
+<ul>
+<li>HTML links:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"sms:"</span>&gt;</span>Launch Messages App<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"sms:1-408-555-1212"</span>&gt;</span>New SMS Message<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Native app URL strings:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sms:</div><div class="line">sms:1-408-555-1212</div></pre></td></tr></table></figure>
+<h3 id="Opening-Locations-in-Maps"><a href="#Opening-Locations-in-Maps" class="headerlink" title="Opening Locations in Maps"></a>Opening Locations in Maps</h3><p>Use specially formatted URLs to open the Maps app and display directions or locations.</p>
+<hr>
+<p>用特定格式的 URL 来打开 地图 app 并显示指定方向或者坐标。</p>
+<h4 id="Map-Links"><a href="#Map-Links" class="headerlink" title="Map Links"></a>Map Links</h4><p>The maps URL scheme is used to show geographical locations and to generate driving directions between two points. If your app includes address or location information, you can use map links to open that information in the Maps app in iOS or macOS.</p>
+<hr>
+<p>地图 URL scheme 用来显示地理位置以及两个地点之间的导航。如果你的 app 包含地址或者位置信息，你可以使用 map 链接在 iOS、macOS 地图 app 上打开该地址或位置。</p>
+<p>Unlike some schemes, map URLs do not start with a “maps” scheme identifier. Instead, map links are specified as regular <code>http</code> links and are opened either in Safari or the Maps app on the target platform.</p>
+<hr>
+<p>map URL 不像其他一些 scheme 使用 “maps” 开头。取而代之的是使用常规的 <code>http</code> 链接，并在 Safari 或者其他平台的 地图 app 中打开。</p>
+<p>Table 5-1 lists the supported parameters along with a brief description of each.</p>
+<hr>
+<p>表格 5-1 列举了每个支持的参数以及其简要说明。</p>
+<p><strong>Table 5-1</strong>  Supported Apple Maps parameters</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t</code></td>
+<td>The map type. If you don’t specify one of the documented values, the current map type is used.</td>
+<td><code>m</code> (standard view)<code>k</code> (satellite view)<code>h</code> (hybrid view)<code>r</code> (transit view)</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>The query. This parameter is treated as if its value had been typed into the Maps search field by the user. Note that <code>q=*</code>is not supportedThe <code>q</code> parameter can also be used as a label if the location is explicitly defined in the <code>ll</code> or <code>address</code> parameters.</td>
+<td>A URL-encoded string that describes the search object, such as “pizza,” or an address to be geocoded</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>The address. Using the address parameter simply displays the specified location, it does not perform a search for the location.</td>
+<td>An address string that geolocation can understand.</td>
+</tr>
+<tr>
+<td><code>near</code></td>
+<td>A hint used during search. If the <code>sll</code> parameter is missing or its value is incomplete, the value of <code>near</code> is used instead.</td>
+<td>A comma-separated pair of floating point values that represent latitude and longitude (in that order).</td>
+</tr>
+<tr>
+<td><code>ll</code></td>
+<td>The location around which the map should be centered.The <code>ll</code> parameter can also represent a pin location when you use the <code>q</code> parameter to specify a name.</td>
+<td>A comma-separated pair of floating point values that represent latitude and longitude (in that order).</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>The zoom level. You can use the <code>z</code> parameter only when you also use the <code>sll</code> parameter; in particular, you can’t use <code>z</code> in combination with the <code>spn</code> or <code>sspn</code> parameters.</td>
+<td>A floating point value between <code>2</code> and <code>21</code>that defines the area around the center point that should be displayed.</td>
+</tr>
+<tr>
+<td><code>spn</code></td>
+<td>The area around the center point, or <em>span</em>. The center point is specified by the <code>ll</code> parameter.You can’t use the <code>spn</code> parameter in combination with the <code>z</code> parameter.</td>
+<td>A comma-separated pair of floating point values that represent latitude and longitude (in that order).</td>
+</tr>
+<tr>
+<td><code>saddr</code></td>
+<td>The source address to be used as the starting point for directions.A complete directions request includes the <code>saddr</code>, <code>daddr</code>, and <code>dirflg</code> parameters, but only the <code>daddr</code> parameter is required. If you don’t specify a value for <code>saddr</code>, the starting point is “here.”</td>
+<td>An address string that geolocation can understand.</td>
+</tr>
+<tr>
+<td><code>daddr</code></td>
+<td>The destination address to be used as the destination point for directions.A complete directions request includes the <code>saddr</code>, <code>daddr</code>, and <code>dirflg</code> parameters, but only the <code>daddr</code> parameter is required.</td>
+<td>An address string that geolocation can understand.</td>
+</tr>
+<tr>
+<td><code>dirflg</code></td>
+<td>The transport type.A complete directions request includes the <code>saddr</code>, <code>daddr</code>, and <code>dirflg</code> parameters, but only the <code>daddr</code> parameter is required. If you don’t specify one of the documented transport type values, the <code>dirflg</code> parameter is ignored; if you don’t specify any value, Maps uses the user’s preferred transport type or the previous setting.</td>
+<td><code>d</code> (by car)<code>w</code> (by foot)<code>r</code> (by public transit)</td>
+</tr>
+<tr>
+<td><code>sll</code></td>
+<td>The search location. You can specify the <code>sll</code> parameter by itself or in combination with the <code>q</code> parameter. For example, <code>http://maps.apple.com/?sll=50.894967,4.341626&amp;z=10&amp;t=s</code> is a valid query.</td>
+<td>A comma-separated pair of floating point values that represent latitude and longitude (in that order).</td>
+</tr>
+<tr>
+<td><code>sspn</code></td>
+<td>The screen span. Use the <code>sspn</code> parameter to specify a span around the search location specified by the <code>sll</code> parameter.</td>
+<td>A comma-separated pair of floating point values that represent latitude and longitude (in that order).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Meaning</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>t</code></td>
+<td>地图类型。如果你不指定文档中的任何类型，那么会使用地图当前的类型。</td>
+<td><code>m</code> (标准视图)<code>k</code> (卫星视图)<code>h</code> (混合视图)<code>r</code> (交通视图)</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>查询参数。这个参数会被当成搜索值填入到地图的搜索框中。注意  <code>q=*</code> 是不支持的。如果位置由 <code>ll</code> 或者 <code>address</code> 参数明确地指定，那么 <code>q</code> 参数会被当做标签来对待。</td>
+<td>经过URL编码的字符串，用来描述搜索对象，比如“披萨”，或者需要被地理编码的地点。</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td>地址。使用地址参数只会简单显示地址的位置，并不会执行搜索该地址的操作。</td>
+<td>一个可以识别的地址字符串。</td>
+</tr>
+<tr>
+<td><code>near</code></td>
+<td>搜索中的提示. 如果没有 <code>sll</code> 参数或者该参数的值不完整，那么将会使用 <code>near</code> 的值代替。</td>
+<td>用逗号分隔的浮点数分别表示纬度和经度。</td>
+</tr>
+<tr>
+<td><code>ll</code></td>
+<td>表示地图中心点的坐标。当你使用 <code>q</code> 参数指定一个名字时，<code>ll</code> 参数会作为一个大头针放置在地图上进行展示。</td>
+<td>用逗号分隔的浮点数分别表示纬度和经度。</td>
+</tr>
+<tr>
+<td><code>z</code></td>
+<td>缩放等级。<code>z</code> 参数只有在使用了 <code>sll</code> 参数后生效；一个比较特殊的地方是 <code>z</code> 不能和 <code>spn</code> 或者 <code>sspn</code> 参数共同使用。</td>
+<td>用来显示地图中心点附近显示多大区域的值，必须介于 <code>2</code> 和 <code>21</code> 之间。</td>
+</tr>
+<tr>
+<td><code>spn</code></td>
+<td>地图中心点附件的区域大小，或者说是<em>跨度</em>。中心点必须由 <code>ll</code> 参数进行指定。你不能同时使用 <code>z</code> 和 <code>span</code> 两个参数。</td>
+<td>用逗号分隔的浮点数分别表示纬度和经度。</td>
+</tr>
+<tr>
+<td><code>saddr</code></td>
+<td>一个指定线路的起点位置。一个完整的线路包含 <code>saddr</code>，<code>daddr</code>，<code>dirflg</code> 3个参数构成，但是只有 <code>daddr</code> 参数是必须的。如果你不指定 <code>saddr</code> 参数，那么起始点就是当前位置。</td>
+<td>一个可以识别的地址字符串。</td>
+</tr>
+<tr>
+<td><code>daddr</code></td>
+<td>一个指定线路的目标位置。一个完整的线路包含 <code>saddr</code>，<code>daddr</code>，<code>dirflg</code> 3个参数构成，但是只有 <code>daddr</code> 参数是必须的。</td>
+<td>一个可以识别的地址字符串。</td>
+</tr>
+<tr>
+<td><code>dirflg</code></td>
+<td>交通方式。一个完整的线路包含 <code>saddr</code>，<code>daddr</code>，<code>dirflg</code> 3个参数构成，但是只有 <code>daddr</code> 参数是必须的。如果该参数是除了文档内指定的类型以外，该参数将会被忽略；如果你不指定该参数，那么交通方式将会使用用户之前指定的方式。</td>
+<td><code>d</code>（驾车）<code>w</code>（步行）<code>r</code> (公交)</td>
+</tr>
+<tr>
+<td><code>sll</code></td>
+<td>搜索的位置。你可以自己指定 <code>sll</code> 参数，并且可以与 <code>q</code> 参数组合使用。例如， <code>http://maps.apple.com/?sll=50.894967,4.341626&amp;z=10&amp;t=s</code> 是一个合法查询URL。</td>
+<td>用逗号分隔的浮点数分别表示纬度和经度。</td>
+</tr>
+<tr>
+<td><code>sspn</code></td>
+<td>一个屏幕上的经纬度跨度。当使用 <code>sll</code> 参数指定搜索的位置时，你可以使用 <code>sspn</code> 参数指定经纬度跨度。</td>
+<td>用逗号分隔的浮点数分别表示纬度和经度。</td>
+</tr>
+</tbody>
+</table>
+<p>You can use the maps URL scheme to help the user:</p>
+<ul>
+<li>Perform a search</li>
+<li>Get directions to a location</li>
+<li>View a specific location</li>
+</ul>
+<hr>
+<p>你可以使用地图 URL scheme 帮助用户完成下面这些操作：</p>
+<ul>
+<li>搜索一个地点</li>
+<li>给出前往指定地点的线路</li>
+<li>查看一个指定的位置</li>
+</ul>
+<p>To perform a search, supply a properly encoded URL string as the value of the <code>q</code> parameter. For example:</p>
+<hr>
+<p>使用一个经过编码的正确的URL字符串作为 <code>q</code> 参数的值来执行搜索。举个例子：</p>
+<p><code>http://maps.apple.com/?q=Mexican+Restaurant</code></p>
+<p>To specify a location for search, you can supply a value for the <code>near</code> parameter, or combine the <code>sll</code> parameter with either the <code>z</code> or <code>sspn</code> parameters. You can also set the map type using the <code>t</code> parameter, as shown here:</p>
+<hr>
+<p>在搜索指定位置时，你可以使用 <code>near</code> 参数，或者结合 <code>z</code> 或者 <code>sspn</code> 和 <code>sll</code> 参数共同使用。当然你也可以使用 <code>t</code> 参数来指定地图类型，比如这样：</p>
+<p><code>http://maps.apple.com/?q=Mexican+Restaurant&amp;sll=50.894967,4.341626&amp;z=10&amp;t=s</code></p>
+<p>To provide navigation directions from one location to another, supply the start and destination addresses in the <code>saddr</code> and <code>daddr</code> parameters as shown below. You can also supply much more detail for the start and destination addresses than is shown here.</p>
+<hr>
+<p>使用 <code>saddr</code> 和 <code>daddr</code> 参数来指定起始以及目的地位置，从而提供导航功能。你还可以提供比如下示例中更多的详细参数。</p>
+<p><code>http://maps.apple.com/?saddr=Cupertino&amp;daddr=San+Francisco</code></p>
+<p>To specify a transport type, you can use the <code>dirflg</code> parameter as shown here:</p>
+<hr>
+<p>如下所示，你可以使用 <code>dirflg</code> 参数指定交通方式：</p>
+<p><code>http://maps.apple.com/?saddr=San+Jose&amp;daddr=San+Francisco&amp;dirflg=r</code></p>
+<p>You can omit the start address when you want to provide directions “from here.” The following example shows a search from here that provides driving directions in a hybrid map.</p>
+<hr>
+<p>当你想从当前位置开始查询线路时，你可以忽略起始位置参数。下面这个例子展示了在混合地图中使用驾车到达指定地点的线路。</p>
+<p><code>http://maps.apple.com/?daddr=San+Francisco&amp;dirflg=d&amp;t=h</code></p>
+<p>To display a specific location, use the <code>ll</code> parameter to center the map at the specified position as shown here:</p>
+<hr>
+<p>要显示特定的位置，那么使用 <code>ll</code> 参数来指定地图中心点的坐标，如下所示：</p>
+<p><code>http://maps.apple.com/?ll=50.894967,4.341626</code></p>
+<p>Another way to display a location is to specify an address, such as:</p>
+<hr>
+<p>另一种显示特定位置的方式是使用指定的地址，如下所示：</p>
+<p><code>http://maps.apple.com/?address=1,Infinite+Loop,Cupertino,California</code></p>
+<p>If you use both the <code>ll</code> and <code>address</code> parameters, <code>ll</code> takes precedence over <code>address</code>. If you include a name in the value of the <code>q</code> parameter, Maps tries to match the name at the specified location.</p>
+<hr>
+<p>如果你同时使用了 <code>ll</code> 和 <code>addres</code> 参数，那么会优先使用 <code>ll</code> 参数。如果你的参数中包含了 <code>q</code> 参数，那么 地图 app 会尝试在指定位置处匹配这个名称。</p>
+<h3 id="Opening-Items-in-iTunes"><a href="#Opening-Items-in-iTunes" class="headerlink" title="Opening Items in iTunes"></a>Opening Items in iTunes</h3><p>Use specially formatted URLs to open iTunes and display items in the iTunes Music Store.</p>
+<hr>
+<p>用特定格式的 URL 来打开 iTunes app 并显示 iTunes 音乐商店中的指定项目。</p>
+<h4 id="iTunes-Links"><a href="#iTunes-Links" class="headerlink" title="iTunes Links"></a>iTunes Links</h4><p>The iTunes URL scheme is used to link to content on the iTunes Music Store. The iTunes URL format is complicated to construct, so you create it using an online tool called iTunes Link Maker. The tool allows you to select a country destination and media type, and then search by song, album, or artist. After you select the item you want to link to, it generates the corresponding URL.</p>
+<hr>
+<p>iTunes URL scheme 用来链接到 iTunes 音乐商店。由于 iTunes URL 的格式比较复杂，所以你可以使用 iTunes Link Maker 这个在线工具来创建。通过该工具，你可以对国家、媒体类型进行筛选并搜索歌曲、专辑或艺术家。当你选择了项目后会生成相应的 URL 。</p>
+<p>The following examples show the strings you would use in Safari and in a native iOS app to link to a song on the iTunes Music Store. The HTML example includes the complete link returned by the iTunes Link Maker tool, which includes a link to any appropriate artwork for the target link.</p>
+<hr>
+<p>下面这个例子展示了一个在 Safari 和 原生 iOS app 中可以使用的 URL 字符串。 HTML 例子中就包含了一个使用  iTunes Link Maker 工具生产的指向合适图片的链接。</p>
+<ul>
+<li>HTML link;</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewAlbum?i=156093464&amp;id=156093462&amp;s=143441"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">height</span>=<span class="string">"15"</span> <span class="attr">width</span>=<span class="string">"61"</span> <span class="attr">alt</span>=<span class="string">"Randy Newman - Toy Story</span></span></div><div class="line">- You&amp;#39;ve Got a Friend In Me" <span class="attr">src</span>=<span class="string">"http://ax.phobos.apple.com.edgesuite.net/images/</span></div><div class="line">badgeitunes61x15dark.gif"&gt;<span class="tag">&lt;/<span class="name">img</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Native app URL string:</li>
+</ul>
+<p><code>http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewAlbum?i=156093464&amp;id=156093462&amp;s=143441</code></p>
+<p>For more information on creating iTunes links, see <a href="http://www.apple.com/itunes/linkmaker/faq/" target="_blank" rel="external">iTunes Link Maker FAQ</a>. That webpage contains a link to the iTunes Link Maker tool.</p>
+<hr>
+<p>有关 <code>iTunes</code> 链接 的详细格式方案信息，请参阅  <a href="http://www.apple.com/itunes/linkmaker/faq/" target="_blank" rel="external">iTunes Link Maker FAQ</a>。该网站中包含了 iTunes Link Maker 工具的链接。</p>
+<h3 id="Opening-YouTube-Videos"><a href="#Opening-YouTube-Videos" class="headerlink" title="Opening YouTube Videos"></a>Opening YouTube Videos</h3><p>Use specially formatted URLs to open YouTube videos in Safari.</p>
+<hr>
+<p>在 Safari 中使用指定格式的 URL 打开 YouTube 视频。</p>
+<h4 id="YouTube-Links"><a href="#YouTube-Links" class="headerlink" title="YouTube Links"></a>YouTube Links</h4><p>The YouTube URL scheme is used to connect to the YouTube website to play the specified video. If your app links to YouTube content, you can use this scheme to play videos from your app.</p>
+<hr>
+<p>YouTube URL scheme 用来打开 YouTube 网站并播放指定的视频。如果你的 app 有链接到 YouTube 的内容，那么你可以从 app 中跳转并播放视频。</p>
+<p>Unlike some schemes, YouTube URLs do not start with a “youtube” scheme identifier. Instead, they are specified as regular <code>http</code> links but are targeted at the YouTube server. The following examples show the basic strings you would use in Safari and in an app to show a YouTube video. In each example, you would need to replace the <code>VIDEO_IDENTIFIER</code> value with the identifier of the video you wanted to display:</p>
+<hr>
+<p>YouTube URL 并不像其他 scheme 一样以 “youtube” 开头。而是使用指向 YouTube 服务的常规 <code>http</code> 链接。以下例子中展示了在 Safari 和 app 中用来展示 YouTube 视频的基本字符串。在每个例子中你需要将 <code>VIDEO_IDENTIFIER</code> 替换成你想要播放的视频 id ：</p>
+<ul>
+<li>HTML links:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.youtube.com/watch?v=VIDEO_IDENTIFIER"</span>&gt;</span>Play Video<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.youtube.com/v/VIDEO_IDENTIFIER"</span>&gt;</span>Play Video<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>Native app URL strings:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http://www.youtube.com/watch?v=VIDEO_IDENTIFIER</div><div class="line">http://www.youtube.com/v/VIDEO_IDENTIFIER</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>iOS Note:</strong> If the YouTube video cannot be viewed on the device, iOS displays an appropriate warning message to the user.</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>iOS 提醒：如果在该 YouTube 视频无法再设备上观看，那么 iOS 系统会显示一个合适的警告给用户。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/21/XcodeDebug/" rel="next" title="Xcode断点实用调试技巧">
+                <i class="fa fa-chevron-left"></i> Xcode断点实用调试技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/jc_logo.png"
+               alt="jcapp" />
+          <p class="site-author-name" itemprop="name">jcapp</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#At-a-Glance"><span class="nav-number">1.</span> <span class="nav-text">At a Glance</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Composing-Items-Using-Mail"><span class="nav-number">1.1.</span> <span class="nav-text">Composing Items Using Mail</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Mail-Links"><span class="nav-number">1.1.1.</span> <span class="nav-text">Mail Links</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Starting-a-Phone-or-FaceTime-Conversation"><span class="nav-number">1.2.</span> <span class="nav-text">Starting a Phone or FaceTime Conversation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Phone-Links"><span class="nav-number">1.2.1.</span> <span class="nav-text">Phone Links</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FaceTime-Links"><span class="nav-number">1.2.2.</span> <span class="nav-text">FaceTime Links</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specifying-Text-Messages"><span class="nav-number">1.3.</span> <span class="nav-text">Specifying Text Messages</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SMS-Links"><span class="nav-number">1.3.1.</span> <span class="nav-text">SMS Links</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Opening-Locations-in-Maps"><span class="nav-number">1.4.</span> <span class="nav-text">Opening Locations in Maps</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-Links"><span class="nav-number">1.4.1.</span> <span class="nav-text">Map Links</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Opening-Items-in-iTunes"><span class="nav-number">1.5.</span> <span class="nav-text">Opening Items in iTunes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iTunes-Links"><span class="nav-number">1.5.1.</span> <span class="nav-text">iTunes Links</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Opening-YouTube-Videos"><span class="nav-number">1.6.</span> <span class="nav-text">Opening YouTube Videos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#YouTube-Links"><span class="nav-number">1.6.1.</span> <span class="nav-text">YouTube Links</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">jcapp</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
