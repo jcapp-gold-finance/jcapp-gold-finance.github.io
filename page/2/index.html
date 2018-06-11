@@ -236,6 +236,157 @@
   
   
 
+  <article class="post post-type-iOS " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/14/iOS链式编程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="jcapp">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/jc_logo.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="金诚App团队blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="金诚App团队blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/14/iOS链式编程/" itemprop="url">
+                  链式编程简单的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-14T15:35:34+08:00">
+                2017-04-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>作者：邵雄华</p>
+</blockquote>
+<p>  链式编程－顾名思义，链式，连贯性为其主要特征，放在编程领域来讲，说简单点就是把一系列的代码执行动作串联起来，不用单独一个一个的执行<br>在使用 Masonry 和 SDAutoLayout 框架实现自动布局的时候，进行了对比</p>
+<h4 id="Masonry"><a href="#Masonry" class="headerlink" title="Masonry:"></a>Masonry:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[View mas_makeConstraints:^(MASConstraintMaker *make) &#123;</div><div class="line">      make.top.equalTo(anotherView);</div><div class="line">      make.left.equalTo(anotherView);</div><div class="line">      make.width.mas_equalTo(@60);</div><div class="line">      make.height.mas_equalTo(@60);</div><div class="line">&#125;];</div></pre></td></tr></table></figure>
+<h4 id="SDAutoLayout"><a href="#SDAutoLayout" class="headerlink" title="SDAutoLayout:"></a>SDAutoLayout:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">View.sd_layout</div><div class="line">.leftSpaceToView(self.view, 10)</div><div class="line">.topSpaceToView(self.view, 80)</div><div class="line">.heightIs(130)</div><div class="line">.widthRatioToView(self.view, 0.4);</div></pre></td></tr></table></figure>
+<p>相比较两种实现方法来看，SDAutoLayout相对来说更简单，代码量更少，也更容易理解和使用！</p>
+<p>这里说一下我对这两个框架的一点理解<br>Masonry 和 SDAutoLayout 实现思路：链式编程思想。</p>
+<h4 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h4><ul>
+<li><p>链式编程思想：是将多个操作（多行代码）通过点号(.)链接在一起成为一句代码,使代码可读性好。a(1).b(2).c(3)</p>
+</li>
+<li><p>链式编程特点：方法的返回值是block,block必须有返回值（本身对象），block参数（需要操作的值）</p>
+</li>
+<li><p>代表：Masonry框架、SDAutoLayout框架</p>
+</li>
+</ul>
+<h3 id="链式编程另一个关键点－－block："><a href="#链式编程另一个关键点－－block：" class="headerlink" title="链式编程另一个关键点－－block："></a>链式编程另一个关键点－－block：</h3><h5 id="Block的定义格式"><a href="#Block的定义格式" class="headerlink" title="Block的定义格式"></a>Block的定义格式</h5><p>返回值类型(^block变量名)(形参列表) = ^(形参列表) {<br>};<br>调用Block保存的代码<br>block变量名(实参);</p>
+<p>默认情况下,Block内部不能修改外面的局部变量<br>Block内部可以修改使用__block修饰的局部变量</p>
+<h5 id="Block的模式"><a href="#Block的模式" class="headerlink" title="Block的模式"></a>Block的模式</h5><p>1.无参数无返回值的Block<br>2.有参数无返回值的Block<br>3.有参数有返回值的Block</p>
+<p>Block简单用法举例</p>
+<p>无参数无返回值的Block</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *  无参数无返回值的Block</div><div class="line"> */</div><div class="line">- (void)func1 &#123;</div><div class="line">    /**</div><div class="line">     *  void ：就是无返回值</div><div class="line">     *  emptyBlock：就是该block的名字</div><div class="line">     *  ()：这里相当于放参数。由于这里是无参数，所以就什么都不写</div><div class="line">     */</div><div class="line">    void (^emptyBlock)() = ^()&#123;</div><div class="line">        NSLog(@&quot;无参数,无返回值的Block&quot;);</div><div class="line">    &#125;;</div><div class="line">    emptyBlock();</div><div class="line">&#125;</div><div class="line">有参数无返回值的Block</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     *  调用这个block进行两个参数相加</div><div class="line">     *</div><div class="line">     *  @param int 参数A</div><div class="line">     *  @param int 参数B</div><div class="line">     *</div><div class="line">     *  @return 无返回值</div><div class="line">     */</div><div class="line">    void (^sumBlock)(int ,int ) = ^(int a,int b)&#123;</div><div class="line">        NSLog(@&quot;%d + %d = %d&quot;,a,b,a+b);</div><div class="line">    &#125;;</div><div class="line">    /**</div><div class="line">     *  调用这个sumBlock的Block，得到的结果是20</div><div class="line">     */</div><div class="line">    sumBlock(10,10);</div><div class="line">有参数有返回值的Block</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">     *  有参数有返回值</div><div class="line">     *</div><div class="line">     *  @param NSString 字符串1</div><div class="line">     *  @param NSString 字符串2</div><div class="line">     *</div><div class="line">     *  @return 返回拼接好的字符串3</div><div class="line">     */    </div><div class="line">    NSString* (^logBlock)(NSString *,NSString *) = ^(NSString * str1,NSString *str2)&#123;</div><div class="line">        return [NSString stringWithFormat:@&quot;%@%@&quot;,str1,str2];</div><div class="line">    &#125;;</div><div class="line">    //调用logBlock,输出的是 我是Block</div><div class="line">    NSLog(@&quot;%@&quot;, logBlock(@&quot;我是&quot;,@&quot;Block&quot;));</div></pre></td></tr></table></figure>
+<h5 id="Block结合typedef使用"><a href="#Block结合typedef使用" class="headerlink" title="Block结合typedef使用"></a>Block结合typedef使用</h5><p>自己定义一个Block类型，用定义的类型去创建Block，更加简单便捷。</p>
+<p>这里举一个例子 UIButton 的链式编程实现</p>
+<h6 id="CHButton-h"><a href="#CHButton-h" class="headerlink" title="CHButton.h"></a>CHButton.h</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">//  CHButton.h</div><div class="line">//  testDemo</div><div class="line">//</div><div class="line">//  Created by 邵雄华 on 2017/4/13.</div><div class="line">//  Copyright © 2017年 sxh. All rights reserved.</div><div class="line">//</div><div class="line"></div><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@class CHButton;</div><div class="line"></div><div class="line">//typedef一个返回值为CHButton* 参数为NSString* 的名字为ChainButtonStringBlock的block,方便以后快速定义该类型block</div><div class="line"></div><div class="line">typedef CHButton *(^ChainButtonStringBlock)(NSString *aName);</div><div class="line"></div><div class="line">typedef CHButton *(^ChainButtonIntegerBlcok)(NSUInteger aNumber);</div><div class="line"></div><div class="line">typedef CHButton *(^ChainButtonColorBlock)(UIColor *aColor);</div><div class="line"></div><div class="line">typedef CHButton *(^ChainButtonFrameBlock)(CGRect aframe);</div><div class="line"></div><div class="line">@interface CHButton : UIButton</div><div class="line"></div><div class="line"></div><div class="line">- (ChainButtonStringBlock)imageName;</div><div class="line"></div><div class="line">- (ChainButtonStringBlock)title;</div><div class="line"></div><div class="line">- (ChainButtonIntegerBlcok)titleFont;</div><div class="line"></div><div class="line">- (ChainButtonColorBlock)textColor;</div><div class="line"></div><div class="line">- (ChainButtonFrameBlock)btnframe;</div><div class="line"></div><div class="line"></div><div class="line">//该方法为工厂方法,能够快速创建一个ChainButton,在一个参数为block的方法中一次性设置好你需要的ChainButton</div><div class="line">+ (CHButton *)makeJJButton:(void (^)(CHButton *))block;</div><div class="line"></div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<h6 id="CHButton-m"><a href="#CHButton-m" class="headerlink" title="CHButton.m"></a>CHButton.m</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">//</div><div class="line">//  CHButton.m</div><div class="line">//  testDemo</div><div class="line">//</div><div class="line">//  Created by 邵雄华 on 2017/4/13.</div><div class="line">//  Copyright © 2017年 sxh. All rights reserved.</div><div class="line">//</div><div class="line"></div><div class="line">#import &quot;CHButton.h&quot;</div><div class="line"></div><div class="line">@implementation CHButton</div><div class="line"></div><div class="line">- (ChainButtonStringBlock)imageName&#123;</div><div class="line">    return ^CHButton *(NSString *aName)&#123;</div><div class="line">        [self setImage:[UIImage imageNamed:aName] forState:UIControlStateNormal];</div><div class="line">        NSLog(@&quot;imageName&quot;);</div><div class="line">        return self;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (ChainButtonStringBlock)title&#123;</div><div class="line">    return ^CHButton *(NSString *aName)&#123;</div><div class="line">        [self setTitle:aName forState:UIControlStateNormal];</div><div class="line">        NSLog(@&quot;title&quot;);</div><div class="line">        return self;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (ChainButtonIntegerBlcok)titleFont&#123;</div><div class="line">    return ^CHButton *(NSUInteger aNumber)&#123;</div><div class="line">        self.titleLabel.font = [UIFont systemFontOfSize:aNumber];</div><div class="line">        NSLog(@&quot;titleFont&quot;);</div><div class="line">        return self;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (ChainButtonColorBlock)textColor&#123;</div><div class="line">    return ^CHButton *(UIColor *aColor)&#123;</div><div class="line">        [self setTitleColor:aColor forState:UIControlStateNormal];</div><div class="line">        NSLog(@&quot;textColor = %@&quot;,aColor);</div><div class="line">        return self;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (ChainButtonFrameBlock)btnframe&#123;</div><div class="line">    return ^CHButton *(CGRect btnframe)&#123;</div><div class="line">        [self setFrame:btnframe];</div><div class="line">        return self;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (CHButton *)makeJJButton:(void (^)(CHButton *))block&#123;</div><div class="line">    CHButton * button = [[CHButton alloc] init];</div><div class="line">    block(button);</div><div class="line">    return button;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<h5 id="使用方法-利用工厂模式创建一个CHButton"><a href="#使用方法-利用工厂模式创建一个CHButton" class="headerlink" title="使用方法:利用工厂模式创建一个CHButton"></a>使用方法:利用工厂模式创建一个CHButton</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[CHButton makeJJButton:^(CHButton *button) &#123;</div><div class="line">        button.title(@&quot;xixixi&quot;).imageName(@&quot;abc&quot;).titleFont(20).textColor([UIColor orangeColor]).btnframe(CGRectMake(100, 100, 100, 100));</div><div class="line">        button.frame = CGRectMake(100, 250, 100, 100);</div><div class="line">        [self.view addSubview:button];</div><div class="line">        [button addTarget:self action:@selector(didClick:) forControlEvents:UIControlEventTouchUpInside];</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>链式编程要返回自身，每一个链式方法都必须返回明确的类型才能一直点下去，使用protocol或继承都不行，必须在每一个方法的声明时明确返回对象的类型。所以链式文件中不但有该类的方法声明，也有父类的方法声明。</p>
+<p>后续会对更多的类进行链式的一种封装，提高开发的效率。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <article class="post post-type-Git " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/13/关于Git的使用过程中的一些不必要的文件的提交/">
 
@@ -1088,7 +1239,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
